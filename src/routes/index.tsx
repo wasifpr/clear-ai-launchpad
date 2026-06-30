@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, X, Sparkles, Zap, Shield, Infinity as InfinityIcon, ArrowRight, Brain, Rocket, Eye, LineChart, Unlock, Layers } from "lucide-react";
+import { Check, X, Sparkles, Zap, Shield, Infinity as InfinityIcon, ArrowRight, Brain, Rocket, Eye, Unlock, Layers } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
+import { siteConfig } from "@/config/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Clear AI — Advanced Agentic AI & Research Assistant" },
-      { name: "description", content: "One platform. Every frontier model. Smart, Fast, Vision, Trading, and Uncensored agents with 256K context. From $14.99/mo." },
+      { name: "description", content: "One platform. Every frontier model. Unrestricted reasoning with a 256K context window. From $14.99/mo." },
       { property: "og:title", content: "Clear AI — Advanced Agentic AI & Research Assistant" },
-      { property: "og:description", content: "One platform. Every frontier model. Smart, Fast, Vision, Trading, and Uncensored — 256K context." },
+      { property: "og:description", content: "Unrestricted reasoning. 256K context windows. No lectures. No refusals." },
     ],
   }),
   component: Landing,
@@ -19,23 +20,24 @@ const modelCategories = [
   { icon: Brain, name: "Smart", tag: "GLM-5.1", desc: "Deep reasoning for hard problems, planning, and agentic workflows.", color: "primary" },
   { icon: Rocket, name: "Fast", tag: "DeepSeek-V4-Flash", desc: "Sub-second answers for everyday questions and high-volume tasks.", color: "accent" },
   { icon: Eye, name: "Vision", tag: "Qwythos-9B 1M", desc: "Image understanding with a 1M context window for documents & screenshots.", color: "primary" },
-  { icon: LineChart, name: "Trading Expert", tag: "FinGPT-Qwen", desc: "Markets, tickers, and financial analysis tuned by FinGPT.", color: "accent" },
-  { icon: Unlock, name: "Uncensored", tag: "Llama-3.3-70B abliterated", desc: "Unrestricted reasoning. No lectures. No refusals.", color: "primary" },
-  { icon: Layers, name: "Other Models", tag: "11+ frontier models", desc: "Kimi K2.6, Mixtral 8x22B, WizardLM-2, Dolphin, Qwen Coder, and more.", color: "accent" },
+  { icon: Unlock, name: "Uncensored", tag: "Llama-3.3-70B abliterated", desc: "Unrestricted reasoning. No lectures. No refusals.", color: "accent" },
+  { icon: Layers, name: "Other Models", tag: "11+ frontier models", desc: "Kimi K2.6, Mixtral 8x22B, WizardLM-2, Dolphin, Qwen Coder, and more.", color: "primary" },
 ];
 
 const refusals: { trigger: string; them: string; us: string }[] = [
-  { trigger: "Resume editing with 'edgy' keywords", them: "Refuses, suggests softer phrasing", us: "Rewrites it sharp, hire-ready" },
-  { trigger: "Aggressive legal & tax strategy", them: "\"Consult a professional\" loop", us: "Real strategies, real loopholes" },
-  { trigger: "Uncensored creative writing", them: "Sanitizes plot, removes conflict", us: "Writes the scene you asked for" },
-  { trigger: "Financial / trading analysis", them: "Generic disclaimer wall", us: "FinGPT-tuned market analysis" },
-  { trigger: "Anti-bot & scraping scripts", them: "\"I can't help with that\"", us: "Working code, headers, rotation" },
-  { trigger: "Programmatic SEO landing pages", them: "Warns about \"thin content\"", us: "Generates 1000s at scale" },
-  { trigger: "Sensitive marketing copy", them: "Adds 6 disclaimers per paragraph", us: "Persuasive copy that converts" },
-  { trigger: "Honest competitor comparison", them: "\"I can't make negative claims\"", us: "Direct, factual, no fence-sitting" },
+  { trigger: "Academic research with complex terminology", them: "Refused", us: "Answered" },
+  { trigger: "Long-form creative writing & script outlining", them: "Refused", us: "Answered" },
+  { trigger: "Advanced web scraping & data formatting scripts", them: "Refused", us: "Answered" },
+  { trigger: "Programmatic SEO landing page copy generation", them: "Refused", us: "Answered" },
+  { trigger: "Multi-document textbook analysis", them: "Token Limits", us: "256K Context" },
+  { trigger: "Direct response sales copywriting", them: "Refused", us: "Answered" },
+  { trigger: "Complex regex & system configuration generation", them: "Refused", us: "Answered" },
+  { trigger: "High-volume translation of technical documentation", them: "Refused", us: "Answered" },
 ];
 
 function Landing() {
+  const { links, pricing, footer } = siteConfig;
+
   return (
     <main className="min-h-screen overflow-x-hidden">
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/40">
@@ -50,7 +52,7 @@ function Landing() {
             <a href="#pricing" className="hover:text-foreground transition">Pricing</a>
             <a href="#trust" className="hover:text-foreground transition">Privacy</a>
           </div>
-          <a href="#pricing" className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
+          <a href={links.trial} className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
             $1 Trial <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </nav>
@@ -75,19 +77,19 @@ function Landing() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95]">
-            <span className="text-gradient">One platform.</span>
+            <span className="text-gradient">$14.99/mo.</span>
             <br />
-            Every frontier model.
+            The AI that actually answers.
           </h1>
 
           <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Smart reasoning, Fast answers, Vision, Trading analysis, and Uncensored mode.{" "}
-            <span className="text-foreground font-medium">256K context. From $14.99/mo.</span>
+            Unrestricted reasoning. 256K context windows.{" "}
+            <span className="text-foreground font-medium">No lectures. No refusals.</span>
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#pricing"
+              href={links.trial}
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-neon hover:shadow-glow transition-all hover:scale-[1.02]"
             >
               $1 Trial
@@ -114,7 +116,7 @@ function Landing() {
               Pick the right brain for <span className="text-gradient">the job.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Six specialized endpoints. One subscription. Switch models with a click.
+              Specialized endpoints. One subscription. Switch models with a click.
             </p>
           </div>
 
@@ -148,10 +150,10 @@ function Landing() {
           <div className="neon-border rounded-2xl overflow-hidden shadow-glow">
             <div className="grid grid-cols-[1.2fr_1fr_1fr] md:grid-cols-[1.4fr_1fr_1fr] text-sm">
               <div className="p-4 md:p-5 bg-secondary/40 border-b border-border/60 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Trigger
+                Use case
               </div>
               <div className="p-4 md:p-5 bg-secondary/40 border-b border-l border-border/60 text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                <X className="w-3.5 h-3.5 text-destructive" /> Them
+                <X className="w-3.5 h-3.5 text-destructive" /> Them (ChatGPT / Claude / Gemini)
               </div>
               <div className="p-4 md:p-5 bg-primary/10 border-b border-l border-border/60 text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
                 <Check className="w-3.5 h-3.5 text-primary" /> Clear AI
@@ -162,11 +164,11 @@ function Landing() {
                   <div className="p-4 md:p-5 border-b border-border/40 font-medium">
                     {row.trigger}
                   </div>
-                  <div className="p-4 md:p-5 border-b border-l border-border/40 text-muted-foreground">
-                    {row.them}
+                  <div className="p-4 md:p-5 border-b border-l border-border/40 text-muted-foreground flex items-center gap-2">
+                    <X className="w-3.5 h-3.5 text-destructive/80 shrink-0" /> {row.them}
                   </div>
-                  <div className="p-4 md:p-5 border-b border-l border-border/40 bg-primary/[0.04] text-foreground">
-                    {row.us}
+                  <div className="p-4 md:p-5 border-b border-l border-border/40 bg-primary/[0.04] text-foreground flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-primary shrink-0" /> {row.us}
                   </div>
                 </div>
               ))}
@@ -176,57 +178,30 @@ function Landing() {
       </section>
 
       <section id="pricing" className="relative py-24 md:py-32">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">Pricing</p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Three tiers. <span className="text-gradient">Every model unlocked.</span>
+              Simple pricing. <span className="text-gradient">No surprises.</span>
             </h2>
-            <p className="mt-5 text-muted-foreground">Start free. Upgrade for full access. Cancel any time.</p>
+            <p className="mt-5 text-muted-foreground">Start with a $1 trial. Cancel any time.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="neon-border rounded-2xl p-7 bg-card/30">
-              <div className="flex items-center gap-2 text-muted-foreground text-sm font-semibold">
-                <Sparkles className="w-4 h-4" /> Free
-              </div>
-              <div className="mt-5 flex items-baseline gap-1.5">
-                <span className="text-5xl font-black tracking-tight">$0</span>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">Taste the platform. No card required.</p>
-              <a href="#" className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 transition">
-                Sign up free
-              </a>
-              <ul className="mt-7 space-y-3 text-sm">
-                {["DeepSeek-V4-Flash only", "256K context", "Standard rate limits", "Community support"].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <div className="neon-border rounded-2xl p-7 shadow-electric">
               <div className="flex items-center gap-2 text-accent text-sm font-semibold">
-                <Zap className="w-4 h-4" /> PRO
+                <Zap className="w-4 h-4" /> {pricing.starter.name}
               </div>
               <div className="mt-5 flex items-baseline gap-1.5">
-                <span className="text-5xl font-black tracking-tight">$14.99</span>
-                <span className="text-muted-foreground">/mo</span>
+                <span className="text-5xl font-black tracking-tight">{pricing.starter.price}</span>
+                <span className="text-muted-foreground">{pricing.starter.period}</span>
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">Everyday power users. Uncensored unlocked.</p>
-              <a href="#" className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 hover:border-accent/60 transition">
-                Start $1 Trial
+              <p className="mt-3 text-sm text-muted-foreground">{pricing.starter.blurb}</p>
+              <a href={links.starterCheckout} className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 hover:border-accent/60 transition">
+                {pricing.starter.cta}
               </a>
               <ul className="mt-7 space-y-3 text-sm">
-                {[
-                  "Everything in Free",
-                  "Uncensored (Llama-3.3 abliterated)",
-                  "Qwen2.5-Coder-32B",
-                  "Mixtral 8x22B",
-                  "Higher rate limits",
-                ].map((f) => (
+                {pricing.starter.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
                     <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                     <span>{f}</span>
@@ -240,25 +215,18 @@ function Landing() {
                 Most popular
               </div>
               <div className="flex items-center gap-2 text-primary text-sm font-semibold">
-                <Rocket className="w-4 h-4" /> PRO PLUS
+                <Rocket className="w-4 h-4" /> {pricing.power.name}
               </div>
               <div className="mt-5 flex items-baseline gap-1.5">
-                <span className="text-5xl font-black tracking-tight">$29</span>
-                <span className="text-muted-foreground">/mo</span>
+                <span className="text-5xl font-black tracking-tight">{pricing.power.price}</span>
+                <span className="text-muted-foreground">{pricing.power.period}</span>
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">Every model. Every endpoint. No limits.</p>
-              <a href="#" className="mt-7 block text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
-                Start $1 Trial
+              <p className="mt-3 text-sm text-muted-foreground">{pricing.power.blurb}</p>
+              <a href={links.powerCheckout} className="mt-7 block text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
+                {pricing.power.cta}
               </a>
               <ul className="mt-7 space-y-3 text-sm">
-                {[
-                  "Everything in PRO",
-                  "DeepSeek-V4-Pro & GLM-5.1",
-                  "Kimi K2.6 (long-context)",
-                  "FinGPT-Qwen (Trading)",
-                  "WizardLM-2, Dolphin, Llama-3.3",
-                  "Priority queue & early access",
-                ].map((f) => (
+                {pricing.power.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
                     <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                     <span>{f}</span>
@@ -278,13 +246,12 @@ function Landing() {
           </div>
           <p className="text-xs md:text-sm text-muted-foreground text-center max-w-xl">
             <Shield className="inline w-3.5 h-3.5 mr-1.5 text-primary -mt-0.5" />
-            Privacy-first. Server-side API key management.{" "}
-            <span className="text-foreground font-medium">Your chats are yours.</span>
+            {footer.privacyLine}
           </p>
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Clear AI</p>
         </div>
         <div className="border-t border-border/40 py-3 text-center text-[10px] text-muted-foreground/70 px-6">
-          AI disclosure: Clear AI is an AI assistant. Outputs may be inaccurate — verify before relying on them.
+          {footer.aiDisclosure}
         </div>
       </footer>
     </main>
