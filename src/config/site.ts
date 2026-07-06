@@ -21,9 +21,9 @@ export const siteConfig = {
       "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
     powerCheckout:
       "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
-    signup: "https://app.clearai.example.com/signup",
-    login: "https://app.clearai.example.com/login",
-    support: "mailto:support@clearai.example.com",
+    signup: "https://app.clearaiagents.com",
+    login: "https://app.clearaiagents.com",
+    support: "mailto:support@clearaiagents.com",
   },
 
   // Pricing — edit price, period, or features here.
