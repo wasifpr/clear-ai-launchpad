@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, X, Sparkles, Zap, Shield, Infinity as InfinityIcon, ArrowRight, Brain, Rocket, Eye, Unlock, Layers } from "lucide-react";
+import { Check, X, Sparkles, Zap, Shield, Infinity as InfinityIcon, ArrowRight, Brain, Rocket, Eye, Unlock, Layers, Send } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import { siteConfig } from "@/config/site";
@@ -50,9 +50,10 @@ function Landing() {
             <a href="#models" className="hover:text-foreground transition">Models</a>
             <a href="#compare" className="hover:text-foreground transition">Compare</a>
             <a href="#pricing" className="hover:text-foreground transition">Pricing</a>
+            <a href="#contact" className="hover:text-foreground transition">Contact</a>
             <a href="#trust" className="hover:text-foreground transition">Privacy</a>
           </div>
-          <a href={links.trial} className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
+          <a href={links.trial} data-polar-checkout className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
             $1 Trial <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </nav>
@@ -90,6 +91,7 @@ function Landing() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={links.trial}
+              data-polar-checkout
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-neon hover:shadow-glow transition-all hover:scale-[1.02]"
             >
               $1 Trial
@@ -197,7 +199,7 @@ function Landing() {
                 <span className="text-muted-foreground">{pricing.starter.period}</span>
               </div>
               <p className="mt-3 text-sm text-muted-foreground">{pricing.starter.blurb}</p>
-              <a href={links.starterCheckout} className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 hover:border-accent/60 transition">
+              <a href={links.starterCheckout} data-polar-checkout className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 hover:border-accent/60 transition">
                 {pricing.starter.cta}
               </a>
               <ul className="mt-7 space-y-3 text-sm">
@@ -222,7 +224,7 @@ function Landing() {
                 <span className="text-muted-foreground">{pricing.power.period}</span>
               </div>
               <p className="mt-3 text-sm text-muted-foreground">{pricing.power.blurb}</p>
-              <a href={links.powerCheckout} className="mt-7 block text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
+              <a href={links.powerCheckout} data-polar-checkout className="mt-7 block text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
                 {pricing.power.cta}
               </a>
               <ul className="mt-7 space-y-3 text-sm">
@@ -235,6 +237,49 @@ function Landing() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative py-24 md:py-32">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3">Contact</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Have questions? <span className="text-gradient">Get in touch.</span>
+            </h2>
+          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const data = new FormData(form);
+              const name = data.get("name") as string;
+              const email = data.get("email") as string;
+              const message = data.get("message") as string;
+              const supportEmail = links.support.replace(/^mailto:/, "");
+              window.location.href = `mailto:${supportEmail}?subject=${encodeURIComponent(`Message from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+              form.reset();
+            }}
+            className="neon-border rounded-2xl p-6 md:p-8 space-y-5 bg-card/40 backdrop-blur-sm"
+          >
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</label>
+                <input id="name" name="name" type="text" required placeholder="Your name" className="w-full rounded-xl bg-secondary border border-border/60 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition" />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.com" className="w-full rounded-xl bg-secondary border border-border/60 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
+              <textarea id="message" name="message" required rows={4} placeholder="How can we help?" className="w-full rounded-xl bg-secondary border border-border/60 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition resize-none" />
+            </div>
+            <button type="submit" className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition">
+              <Send className="w-4 h-4" /> Send Message
+            </button>
+          </form>
         </div>
       </section>
 
