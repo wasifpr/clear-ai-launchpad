@@ -8,16 +8,19 @@
 export const siteConfig = {
   brand: {
     name: "Clear AI",
-    tagline: "Advanced Agentic AI & Research Assistant",
+    tagline: "Uncensored, Unrestricted Agentic AI",
     description:
-      "One platform. Every frontier model. Unrestricted reasoning with a 256K context window.",
+      "Instant access to the world's most powerful open-source models without the annoying refusals.",
   },
 
   // Checkout / CTA links — change these to your live payment URLs.
   links: {
-    trial: "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
-    starterCheckout: "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
-    powerCheckout: "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
+    checkout:
+      "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
+    proCheckout:
+      "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
+    powerCheckout:
+      "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
     signup: "https://app.clearai.example.com/signup",
     login: "https://app.clearai.example.com/login",
     support: "mailto:support@clearai.example.com",
@@ -25,31 +28,49 @@ export const siteConfig = {
 
   // Pricing — edit price, period, or features here.
   pricing: {
-    starter: {
-      name: "Starter",
+    free: {
+      name: "Free",
+      price: "$0",
+      period: "/mo",
+      blurb: "Access to Google Gemma. A perfect baseline.",
+      cta: "Get Started Free",
+      features: [
+        "Google Gemma access",
+        "Standard context window",
+        "Basic rate limits",
+        "Community support",
+      ],
+    },
+    pro: {
+      name: "PRO",
       price: "$14.99",
       period: "/mo",
-      blurb: "Full access. Priority queue. Uncensored unlocked.",
-      cta: "Start $1 Trial",
+      blurb:
+        "Adds Mixtral, Dolphin, Qwen Coder, and on-demand model requests.",
+      cta: "Subscribe",
       features: [
-        "Full model access",
-        "256K context window",
-        "Uncensored reasoning",
+        "Everything in Free",
+        "Mixtral 8x22B",
+        "Dolphin",
+        "Qwen Coder",
+        "On-demand model requests",
         "Priority queue",
-        "Standard rate limits",
       ],
     },
     power: {
       name: "Power",
       price: "$29",
       period: "/mo",
-      blurb: "Higher limits. Early access to new models.",
-      cta: "Start $1 Trial",
+      blurb:
+        "The flagship tier. Access GLM-5.1 (Smart), DeepSeek-V4-Flash (Fast), Qwythos-9B (Vision), and Llama-3.3-70B (Uncensored).",
+      cta: "Subscribe",
       features: [
-        "Everything in Starter",
-        "Higher rate limits",
-        "Early access to new models",
-        "Long-context priority",
+        "Everything in PRO",
+        "GLM-5.1 (Smart)",
+        "DeepSeek-V4-Flash (Fast)",
+        "Qwythos-9B (Vision)",
+        "Llama-3.3-70B (Uncensored)",
+        "Highest rate limits",
         "Priority support",
       ],
     },
@@ -59,6 +80,6 @@ export const siteConfig = {
     privacyLine:
       "Privacy-first. Server-side API key management. Your chats are yours.",
     aiDisclosure:
-      "AI disclosure: Clear AI is an AI assistant. Outputs may be inaccurate — verify before relying on them.",
+      "You are interacting with an AI. While our models are unfiltered for productivity, we maintain hard-line safety filters against strictly illegal content.",
   },
 } as const;
