@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Check,
   X,
@@ -57,6 +57,9 @@ function Landing() {
             <a href="#pricing" className="hover:text-foreground transition">
               Pricing
             </a>
+            <Link to="/blog" className="hover:text-foreground transition">
+              Blog
+            </Link>
             <a href="#contact" className="hover:text-foreground transition">
               Contact
             </a>
