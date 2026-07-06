@@ -21,8 +21,8 @@ export const siteConfig = {
       "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
     powerCheckout:
       "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
-    signup: "https://app.clearaiagents.com",
-    login: "https://app.clearaiagents.com",
+    signup: "https://chat.clearaiagents.com",
+    login: "https://chat.clearaiagents.com",
     support: "mailto:support@clearaiagents.com",
   },
 
