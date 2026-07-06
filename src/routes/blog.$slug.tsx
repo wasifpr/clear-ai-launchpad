@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, ArrowLeft, Calendar, Clock, Share2, User } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/blog/BlogChrome";
-import { getPost, formatDate, type Block } from "@/lib/blog-data";
+import { getPost, formatDate, type Block, type Post } from "@/lib/blog-data";
 import { siteConfig } from "@/config/site";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -251,7 +251,7 @@ function InArticleCTA() {
 }
 
 function PostPage() {
-  const { post } = Route.useLoaderData();
+  const { post } = Route.useLoaderData() as { post: Post };
   const midpoint = Math.floor(post.content.length / 2);
 
   const handleShare = async () => {
