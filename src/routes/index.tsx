@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
+import { TrustSection } from "@/components/TrustSection";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
