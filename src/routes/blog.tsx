@@ -188,7 +188,10 @@ function BlogIndex() {
         </div>
       </section>
 
+      <TrustStrip />
+
       <SiteFooter />
+
     </main>
   );
 }
