@@ -1,6 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, ArrowLeft, Calendar, Clock, Share2, User } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/blog/BlogChrome";
+import { TrustStrip } from "@/components/TrustSection";
+
 import { getPost, formatDate, type Block, type Post } from "@/lib/blog-data";
 import { siteConfig } from "@/config/site";
 
