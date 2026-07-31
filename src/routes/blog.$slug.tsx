@@ -348,7 +348,10 @@ function PostPage() {
         </div>
       </article>
 
+      <TrustStrip />
+
       <SiteFooter />
+
     </main>
   );
 }
