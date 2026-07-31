@@ -43,7 +43,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
-  const { links, pricing, footer } = siteConfig;
+  const { links, pricing, footer, models, modalities, platforms, faq } =
+    siteConfig;
 
   return (
     <main className="min-h-screen overflow-x-hidden">
