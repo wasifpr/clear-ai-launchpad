@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/blog/BlogChrome";
+import { TrustStrip } from "@/components/TrustSection";
+
 import { getFeaturedPost, getOtherPosts, formatDate, posts } from "@/lib/blog-data";
 
 export const Route = createFileRoute("/blog")({
@@ -188,7 +190,10 @@ function BlogIndex() {
         </div>
       </section>
 
+      <TrustStrip />
+
       <SiteFooter />
+
     </main>
   );
 }

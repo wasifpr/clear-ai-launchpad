@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
+import { TrustSection } from "@/components/TrustSection";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -453,7 +455,11 @@ function Landing() {
         </div>
       </section>
 
+      {/* Social proof */}
+      <TrustSection />
+
       {/* 3. Pricing Table */}
+
       <section id="pricing" className="relative py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
