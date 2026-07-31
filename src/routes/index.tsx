@@ -9,6 +9,12 @@ import {
   Send,
   Bot,
   Terminal,
+  Brain,
+  Eye,
+  PenLine,
+  Image as ImageIcon,
+  Smartphone,
+  ChevronDown,
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
@@ -50,12 +56,18 @@ function Landing() {
               Clear<span className="text-gradient">AI</span>
             </span>
           </a>
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+          <div className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
+            <a href="#models" className="hover:text-foreground transition">
+              Models
+            </a>
             <a href="#compare" className="hover:text-foreground transition">
               Compare
             </a>
             <a href="#pricing" className="hover:text-foreground transition">
               Pricing
+            </a>
+            <a href="#faq" className="hover:text-foreground transition">
+              FAQ
             </a>
             <Link to="/blog" className="hover:text-foreground transition">
               Blog
@@ -129,14 +141,85 @@ function Landing() {
 
           <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-muted-foreground">
             <div className="flex items-center gap-1.5">
-              <Zap className="w-3.5 h-3.5 text-primary" /> 15+ models
+              <Zap className="w-3.5 h-3.5 text-primary" /> Unlimited messages
             </div>
             <div className="flex items-center gap-1.5">
               <Terminal className="w-3.5 h-3.5 text-accent" /> 256K context
             </div>
             <div className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-primary" /> Privacy-first
+              <Eye className="w-3.5 h-3.5 text-primary" /> Chat · Image · Video
             </div>
+            <div className="flex items-center gap-1.5">
+              <Shield className="w-3.5 h-3.5 text-accent" /> Zero-log privacy
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Model lineup */}
+      <section id="models" className="relative py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+              The lineup
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              Four brains.{" "}
+              <span className="text-gradient">One clean interface.</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Pick a brain from a dropdown — no model files, no keys, no
+              configuration. Every model runs derestricted with up to 256K
+              context.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {models.map((m, i) => {
+              const Icon = [Brain, Zap, PenLine, Eye][i] ?? Brain;
+              return (
+                <article
+                  key={m.key}
+                  className="rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm p-6 hover:border-primary/40 hover:shadow-neon transition-all"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 border border-primary/30">
+                      <Icon className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground border border-border/50 rounded-full px-2.5 py-0.5">
+                      {m.badge}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-lg font-bold tracking-tight">
+                    {m.name}
+                  </h3>
+                  <p className="mt-1 text-[11px] font-mono text-accent/80">
+                    {m.engine}
+                  </p>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {m.blurb}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+
+          {/* Modalities */}
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {modalities.map((mode) => (
+              <div
+                key={mode.name}
+                className="rounded-xl border border-border/40 bg-background/40 px-5 py-4"
+              >
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <ImageIcon className="w-3.5 h-3.5 text-accent" />
+                  {mode.name}
+                </div>
+                <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                  {mode.detail}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -421,7 +504,77 @@ function Landing() {
         </div>
       </section>
 
-      {/* 4. Contact & Footer */}
+      {/* 4. Install anywhere */}
+      <section id="platforms" className="relative pb-8">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm p-7 md:p-10">
+            <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+                  Multi-platform
+                </p>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+                  Installs like a real app.{" "}
+                  <span className="text-gradient">No app store.</span>
+                </h2>
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                  Clear AI is a progressive web app — full-screen icon on your
+                  home screen, instant updates, one account everywhere.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-4">
+                {platforms.map((p) => (
+                  <div
+                    key={p.name}
+                    className="rounded-xl border border-border/40 bg-background/40 p-4"
+                  >
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <Smartphone className="w-4 h-4 text-primary" /> {p.name}
+                    </div>
+                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                      {p.how}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FAQ */}
+      <section id="faq" className="relative py-24 md:py-28">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+              FAQ
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Questions, <span className="text-gradient">answered first.</span>
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {faq.map((item) => (
+              <details
+                key={item.q}
+                className="group rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm p-5 open:border-primary/40 transition"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none">
+                  <h3 className="text-sm md:text-base font-semibold tracking-tight">
+                    {item.q}
+                  </h3>
+                  <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0 group-open:rotate-180 transition" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Contact & Footer */}
       <section id="contact" className="relative py-24 md:py-32">
         <div className="max-w-2xl mx-auto px-6">
           <div className="text-center mb-10">
