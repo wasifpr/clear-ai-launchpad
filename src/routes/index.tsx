@@ -22,20 +22,89 @@ import { siteConfig } from "@/config/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Clear AI — Uncensored, Unrestricted Agentic AI" },
+      {
+        title: "Clear AI — Uncensored AI Chat with 256K Context, from $14.99/mo",
+      },
       {
         name: "description",
         content:
-          "Clear AI provides instant access to the world's most powerful open-source models without the annoying refusals. Deep reasoning, instant speed, and raw vision capabilities.",
+          "Uncensored AI chat with unlimited messages, 256K context, image & video generation, and zero-log privacy. Derestricted GLM-4.7 and Qwen3.5 models from $14.99/mo. Start today.",
+      },
+      {
+        name: "keywords",
+        content:
+          "uncensored AI, unrestricted AI chat, no refusal AI, 256K context AI, unlimited AI messages, derestricted GLM-4.7, private AI chat",
       },
       {
         property: "og:title",
-        content: "Clear AI — Uncensored, Unrestricted Agentic AI",
+        content: "Clear AI — Uncensored AI Chat with 256K Context",
       },
       {
         property: "og:description",
         content:
-          "Instant access to powerful open-source models. No lectures. No refusals.",
+          "Unlimited messages, 256K context, image & video generation, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Clear AI — Uncensored AI Chat with 256K Context",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Unlimited messages, 256K context, zero-log privacy. From $14.99/mo.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Clear AI",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web, iOS, Android, Windows, macOS",
+          description:
+            "Uncensored AI chat platform with unlimited messages, 256K context windows, image and video generation, and zero-log privacy.",
+          offers: [
+            siteConfig.pricing.free,
+            siteConfig.pricing.pro,
+            siteConfig.pricing.power,
+          ].map((tier) => ({
+            "@type": "Offer",
+            name: tier.name,
+            price: tier.price.replace("$", ""),
+            priceCurrency: "USD",
+            description: tier.blurb,
+            category: "SubscriptionPlan",
+          })),
+          featureList: siteConfig.models.map((m) => `${m.name}: ${m.blurb}`),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: siteConfig.faq.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Clear AI",
+          description: siteConfig.brand.description,
+          url: "/",
+        }),
       },
     ],
   }),
