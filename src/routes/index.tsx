@@ -764,6 +764,8 @@ function Landing() {
             © {new Date().getFullYear()} Clear AI
           </p>
         </div>
+        <LegalLinks className="pb-8" />
+
         <div className="border-t border-border/40 py-4 text-center text-[11px] text-muted-foreground/70 px-6 leading-relaxed max-w-3xl mx-auto">
           {footer.aiDisclosure}
         </div>
