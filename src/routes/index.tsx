@@ -19,6 +19,8 @@ import {
 import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
 import { TrustSection } from "@/components/TrustSection";
+import { LegalLinks } from "@/components/LegalLinks";
+
 
 
 export const Route = createFileRoute("/")({
