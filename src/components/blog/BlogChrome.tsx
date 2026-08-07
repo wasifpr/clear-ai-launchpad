@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Shield } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
+import { LegalLinks } from "@/components/LegalLinks";
+
 
 export function SiteHeader() {
   const { links } = siteConfig;
@@ -57,6 +59,8 @@ export function SiteFooter() {
         </p>
         <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Clear AI</p>
       </div>
+      <LegalLinks className="pb-8" />
+
       <div className="border-t border-border/40 py-4 text-center text-[11px] text-muted-foreground/70 px-6 leading-relaxed max-w-3xl mx-auto">
         {footer.aiDisclosure}
       </div>
