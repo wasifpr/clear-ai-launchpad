@@ -10,40 +10,40 @@ import posthog from "posthog-js";
 
 const PostHogContext = createContext<typeof posthog | null>(null);
 
+function getWindowPostHog(): typeof posthog | null {
+  if (typeof window === "undefined") return null;
+  // @ts-ignore
+  return window.posthog ?? null;
+}
+
 export function PostHogProvider({ children }: { children: ReactNode }) {
-  const [ready, setReady] = useState(false);
-  const initialized = useRef(false);
+  const [client, setClient] = useState<typeof posthog | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (initialized.current) return;
-    initialized.current = true;
 
-    const apiKey = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_API_KEY;
-    const region = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_REGION || "us";
-
-    if (!apiKey) {
-      console.warn("[PostHog] VITE_LOVABLE_CONNECTOR_POSTHOG_API_KEY is not set");
-      return;
-    }
-
-    const apiHost =
-      region === "eu" ? "https://eu.i.posthog.com" : "https://us.i.posthog.com";
-
-    posthog.init(apiKey, {
-      api_host: apiHost,
-      capture_pageview: true,
-      capture_pageleave: true,
-      loaded: () => setReady(true),
-    });
-
-    return () => {
-      posthog.shutdown();
+    const check = () => {
+      // @ts-ignore
+      const ph = window.posthog;
+      if (ph && ph.capture) {
+        setClient(ph);
+      }
     };
+
+    check();
+
+    if (!client) {
+      const timer = setInterval(check, 100);
+      const timeout = setTimeout(() => clearInterval(timer), 5000);
+      return () => {
+        clearInterval(timer);
+        clearTimeout(timeout);
+      };
+    }
   }, []);
 
   return (
-    <PostHogContext.Provider value={posthog}>
+    <PostHogContext.Provider value={client}>
       {children}
     </PostHogContext.Provider>
   );
