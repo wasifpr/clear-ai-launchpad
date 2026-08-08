@@ -33,7 +33,10 @@ export function PostHogProvider({ children }: { children: ReactNode }) {
       capture_pageview: true,
       capture_pageleave: true,
       debug: true,
-      loaded: () => setReady(true),
+      loaded: () => {
+        setReady(true);
+        posthog.capture("provider_initialized");
+      },
     });
 
     return () => {
