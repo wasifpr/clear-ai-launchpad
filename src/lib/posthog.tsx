@@ -12,10 +12,12 @@ const PostHogContext = createContext<typeof posthog | null>(null);
 
 export function PostHogProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    console.log("[PostHog] Provider effect running, window:", typeof window);
     if (typeof window === "undefined") return;
+    if (initialized.current) return;
+    initialized.current = true;
 
     const apiKey = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_API_KEY;
     const region = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_REGION || "us";
@@ -32,11 +34,7 @@ export function PostHogProvider({ children }: { children: ReactNode }) {
       api_host: apiHost,
       capture_pageview: true,
       capture_pageleave: true,
-      debug: true,
-      loaded: () => {
-        setReady(true);
-        posthog.capture("provider_initialized");
-      },
+      loaded: () => setReady(true),
     });
 
     return () => {
@@ -63,11 +61,9 @@ export function usePostHog() {
  * - contact_clicked (contact links)
  */
 export function PostHogClickTracker() {
-  console.log("[PostHog] ClickTracker render");
   const posthogClient = usePostHog();
 
   useEffect(() => {
-    console.log("[PostHog] ClickTracker effect", { hasClient: !!posthogClient });
     if (!posthogClient) return;
 
     const handleClick = (e: MouseEvent) => {
