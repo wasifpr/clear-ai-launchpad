@@ -20,6 +20,7 @@ import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
 import { TrustSection } from "@/components/TrustSection";
 import { LegalLinks } from "@/components/LegalLinks";
+import { TrackSectionView, usePostHog } from "@/lib/posthog";
 
 
 
@@ -116,6 +117,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
+  const posthog = usePostHog();
   const { links, pricing, footer, models, modalities, platforms, faq } =
     siteConfig;
 
@@ -153,6 +155,7 @@ function Landing() {
           <a
             href={links.checkout}
             data-polar-checkout
+            data-ph-event="cta_clicked"
             className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
           >
             Get Started <ArrowRight className="w-3.5 h-3.5" />
@@ -200,6 +203,7 @@ function Landing() {
             <a
               href={links.checkout}
               data-polar-checkout
+              data-ph-event="cta_clicked"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-neon hover:shadow-glow transition-all hover:scale-[1.02]"
             >
               Get Started
@@ -463,6 +467,7 @@ function Landing() {
       {/* 3. Pricing Table */}
 
       <section id="pricing" className="relative py-24 md:py-32">
+        <TrackSectionView event="pricing_viewed" />
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
@@ -496,6 +501,7 @@ function Landing() {
               </p>
               <a
                 href={links.signup}
+                data-ph-event="cta_clicked"
                 className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 transition"
               >
                 {pricing.free.cta}
@@ -532,6 +538,7 @@ function Landing() {
               <a
                 href={links.proCheckout}
                 data-polar-checkout
+                data-ph-event="cta_clicked"
                 className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 hover:border-accent/60 transition"
               >
                 {pricing.pro.cta}
@@ -565,6 +572,7 @@ function Landing() {
               <a
                 href={links.powerCheckout}
                 data-polar-checkout
+                data-ph-event="cta_clicked"
                 className="mt-7 block text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
               >
                 {pricing.power.cta}
@@ -672,6 +680,13 @@ function Landing() {
               const name = data.get("name") as string;
               const email = data.get("email") as string;
               const message = data.get("message") as string;
+
+              posthog?.capture("contact_submitted", {
+                name,
+                email,
+                message_length: message?.length ?? 0,
+              });
+
               const supportEmail = links.support.replace(/^mailto:/, "");
               window.location.href = `mailto:${supportEmail}?subject=${encodeURIComponent(
                 `Message from ${name}`
