@@ -59,9 +59,11 @@ export function usePostHog() {
  * - contact_clicked (contact links)
  */
 export function PostHogClickTracker() {
+  console.log("[PostHog] ClickTracker render");
   const posthogClient = usePostHog();
 
   useEffect(() => {
+    console.log("[PostHog] ClickTracker effect", { hasClient: !!posthogClient });
     if (!posthogClient) return;
 
     const handleClick = (e: MouseEvent) => {
