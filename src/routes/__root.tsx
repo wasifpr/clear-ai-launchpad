@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { PostHogProvider, PostHogClickTracker } from "@/lib/posthog";
 
 function NotFoundComponent() {
   return (
@@ -99,11 +100,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const posthogKey = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_API_KEY;
+  const posthogRegion = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_REGION || "us";
+  const posthogHost = posthogRegion === "eu" ? "https://eu.i.posthog.com" : "https://us.i.posthog.com";
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
         <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js" />
+        {posthogKey && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister identify alias reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('${posthogKey}', {api_host:'${posthogHost}', capture_pageview:true, capture_pageleave:true});`,
+            }}
+          />
+        )}
       </head>
       <body>
         {children}
@@ -118,8 +131,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <PostHogProvider>
+        <PostHogClickTracker />
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </PostHogProvider>
     </QueryClientProvider>
   );
 }
