@@ -14,6 +14,7 @@ export function PostHogProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    console.log("[PostHog] Provider effect running, window:", typeof window);
     if (typeof window === "undefined") return;
 
     const apiKey = import.meta.env.VITE_LOVABLE_CONNECTOR_POSTHOG_API_KEY;
