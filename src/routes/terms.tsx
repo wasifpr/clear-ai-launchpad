@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { absUrl } from "@/config/site";
 import { LegalPage, LegalSection } from "@/components/legal/LegalPage";
 
 export const Route = createFileRoute("/terms")({
@@ -17,8 +18,10 @@ export const Route = createFileRoute("/terms")({
           "Terms governing accounts, acceptable use, payments, and liability on Clear AI Agents.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: absUrl("/terms") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: absUrl("/terms") }],
   }),
   component: TermsPage,
 });

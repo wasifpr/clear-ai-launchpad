@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { absUrl } from "@/config/site";
 import { LegalPage, LegalSection, LegalList } from "@/components/legal/LegalPage";
 
 export const Route = createFileRoute("/acceptable-use")({
@@ -17,8 +18,10 @@ export const Route = createFileRoute("/acceptable-use")({
           "Prohibited uses and enforcement rules for the Clear AI Agents platform.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: absUrl("/acceptable-use") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: absUrl("/acceptable-use") }],
   }),
   component: AcceptableUsePage,
 });

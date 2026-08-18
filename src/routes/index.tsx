@@ -17,7 +17,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
-import { siteConfig } from "@/config/site";
+import { siteConfig, absUrl } from "@/config/site";
 import { TrustSection } from "@/components/TrustSection";
 import { LegalLinks } from "@/components/LegalLinks";
 import { TrackSectionView, usePostHog } from "@/lib/posthog";
@@ -36,11 +36,6 @@ export const Route = createFileRoute("/")({
           "Uncensored AI chat that answers instead of refusing. Unlimited messages, up to 512K context, vision, zero-log privacy — GLM-4.7, DeepSeek-V4, MiMo-V2.5, Qwen3.5, Gemma 4. From $14.99/mo.",
       },
       {
-        name: "keywords",
-        content:
-          "uncensored AI, unrestricted AI chat, no refusal AI, AI without filters, 512K context AI, unlimited AI messages, derestricted GLM-4.7, DeepSeek-V4, MiMo-V2.5, Qwen3.5 derestricted, Gemma 4 vision, ChatGPT alternative, Claude alternative, zero-log AI",
-      },
-      {
         property: "og:title",
         content: "Clear AI — Uncensored AI Chat with up to 512K Context",
       },
@@ -50,7 +45,7 @@ export const Route = createFileRoute("/")({
           "Six frontier models, unlimited messages, up to 512K context, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: absUrl("/") },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
@@ -62,7 +57,7 @@ export const Route = createFileRoute("/")({
           "Six frontier models, unlimited messages, up to 512K context. From $14.99/mo.",
       },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absUrl("/") }],
     scripts: [
       {
         type: "application/ld+json",
@@ -126,7 +121,7 @@ export const Route = createFileRoute("/")({
           "@type": "Organization",
           name: "Clear AI",
           description: siteConfig.brand.description,
-          url: "/",
+          url: absUrl("/"),
         }),
       },
     ],
@@ -926,7 +921,7 @@ function Landing() {
           <div className="flex items-center gap-2.5">
             <img
               src={logo}
-              alt=""
+              alt="Clear AI logo"
               width={24}
               height={24}
               className="h-6 w-6"

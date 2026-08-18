@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { absUrl } from "@/config/site";
 import { LegalPage, LegalSection, LegalList } from "@/components/legal/LegalPage";
 
 export const Route = createFileRoute("/privacy")({
@@ -17,8 +18,10 @@ export const Route = createFileRoute("/privacy")({
           "How Clear AI Agents collects, uses, retains, and protects your information.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: absUrl("/privacy") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: absUrl("/privacy") }],
   }),
   component: PrivacyPage,
 });

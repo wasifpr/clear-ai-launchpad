@@ -3,6 +3,7 @@ import { ArrowRight, Clock, Calendar } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/blog/BlogChrome";
 import { TrustStrip } from "@/components/TrustSection";
 
+import { absUrl } from "@/config/site";
 import { getFeaturedPost, getOtherPosts, formatDate, posts } from "@/lib/blog-data";
 
 export const Route = createFileRoute("/blog/")({
@@ -21,9 +22,9 @@ export const Route = createFileRoute("/blog/")({
           "Insights, prompt engineering tutorials, and uncensored AI research.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/blog" },
+      { property: "og:url", content: absUrl("/blog") },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: absUrl("/blog") }],
     scripts: [
       {
         type: "application/ld+json",
@@ -33,13 +34,13 @@ export const Route = createFileRoute("/blog/")({
           name: "The Clear AI Blog",
           description:
             "Insights, prompt engineering tutorials, and uncensored AI research.",
-          url: "/blog",
+          url: absUrl("/blog"),
           blogPost: posts.map((p) => ({
             "@type": "BlogPosting",
             headline: p.title,
             datePublished: p.date,
             author: { "@type": "Organization", name: p.author },
-            url: `/blog/${p.slug}`,
+            url: absUrl(`/blog/${p.slug}`),
           })),
         }),
       },
@@ -49,8 +50,8 @@ export const Route = createFileRoute("/blog/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-            { "@type": "ListItem", position: 2, name: "Blog", item: "/blog" },
+            { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Blog", item: absUrl("/blog") },
           ],
         }),
       },
