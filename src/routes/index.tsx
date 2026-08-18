@@ -242,19 +242,27 @@ function Landing() {
               The lineup
             </p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Four brains.{" "}
+              Six brains.{" "}
               <span className="text-gradient">One clean interface.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
               Pick a brain from a dropdown — no model files, no keys, no
-              configuration. Every model runs derestricted with up to 256K
+              configuration. Derestricted frontier models with up to 512K
               context.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {models.map((m, i) => {
-              const Icon = [Brain, Zap, PenLine, Eye][i] ?? Brain;
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {models.map((m) => {
+              const Icon =
+                ({
+                  smart: Brain,
+                  fast: Zap,
+                  deep: Terminal,
+                  creative: PenLine,
+                  uncensored: Shield,
+                  vision: Eye,
+                } as Record<string, typeof Brain>)[m.key] ?? Brain;
               return (
                 <article
                   key={m.key}
