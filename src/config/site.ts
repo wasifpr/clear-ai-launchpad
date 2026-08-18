@@ -183,7 +183,7 @@ export const siteConfig = {
   faq: [
     {
       q: "What models does Clear AI run?",
-      a: "Clear AI runs derestricted open-weight models — GLM-4.7, GLM-4.5-Air-Derestricted, Qwen3.5-Derestricted, and Gemma 4 vision models — behind friendly names: Smart, Fast, Creative, and Vision.",
+      a: "Clear AI runs derestricted open-weight frontier models — GLM-4.7 (355B), GLM-4.6-Derestricted-v5, DeepSeek-V4-Flash (512K context), MiMo-V2.5 (310B), Qwen3.5-27B-Derestricted, and Gemma 4 31B vision models — behind friendly names: Smart, Fast, Long Context, Creative, Derestricted, and Vision.",
     },
     {
       q: "Are there message limits?",
@@ -191,7 +191,7 @@ export const siteConfig = {
     },
     {
       q: "How long is the context window?",
-      a: "Up to 256K tokens (262,144) on the Power tier — enough for entire codebases, textbooks, or multi-document research in a single conversation.",
+      a: "Up to 512K tokens (524,288) on DeepSeek-V4-Flash and 262K on the Gemma 4 and Qwen3.5 models — enough for entire codebases, textbooks, or multi-document research in a single conversation.",
     },
     {
       q: "Do you store my chats?",
@@ -204,6 +204,26 @@ export const siteConfig = {
     {
       q: "Can I cancel anytime?",
       a: "Yes. Subscriptions are month-to-month and cancel in one click from your account settings.",
+    },
+  ],
+
+  /** Extra FAQ entries appended for SEO/GEO coverage. */
+  faqExtra: [
+    {
+      q: "What can Clear AI answer that ChatGPT, Claude, or Gemini refuse?",
+      a: "Clinical and forensic research terminology, long-form fiction with morally grey characters, web scraping and regex scripts, security research and log analysis, blunt competitor teardowns, direct-response sales copy, high-volume translation, and persona roleplay that stays in character.",
+    },
+    {
+      q: "Is Clear AI a good ChatGPT alternative?",
+      a: "Yes. For $14.99/mo you get unlimited messages on derestricted frontier models with up to 512K context, vision, and zero-log privacy — no token metering and no refusal wall on legitimate professional work.",
+    },
+    {
+      q: "Which model should I pick?",
+      a: "Use Fast (MiMo-V2.5) for everyday chat, Smart (GLM-4.7) for planning and deep reasoning, Long Context (DeepSeek-V4-Flash) for whole codebases and document sets, Creative (Qwen3.5-Derestricted) for writing, and Vision (Gemma 4 31B) for screenshots and scanned documents.",
+    },
+    {
+      q: "Do you add new models?",
+      a: "Yes. New frontier and derestricted models are added as they ship, and Power subscribers get early access at no extra cost.",
     },
   ],
 
