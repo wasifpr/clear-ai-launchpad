@@ -6,6 +6,9 @@
  */
 
 export const siteConfig = {
+  /** Canonical site URL — used by the sitemap. Change if you move domains. */
+  siteUrl: "https://clearaiagents.com",
+
   brand: {
     name: "Clear AI",
     tagline: "Uncensored, Unrestricted Agentic AI",
