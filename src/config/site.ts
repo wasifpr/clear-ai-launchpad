@@ -65,12 +65,12 @@ export const siteConfig = {
     },
   ],
 
-  /** Chat / Image / Video / Edit modalities under one subscription. */
+  /** Core capabilities under one subscription. */
   modalities: [
     { name: "Chat", detail: "Streaming chat with 256K context" },
-    { name: "Image", detail: "Text-to-image, image-to-image, inpainting" },
-    { name: "Video", detail: "Short-form video generation" },
-    { name: "Edit", detail: "Upscaling and instruction-based image edits" },
+    { name: "Vision", detail: "Read screenshots, diagrams, and documents" },
+    { name: "Code", detail: "Scripts, refactors, and full-repo reasoning" },
+    { name: "Research", detail: "Multi-document analysis in one thread" },
   ],
 
   /** Install targets — the app is a PWA, no app store required. */
@@ -100,13 +100,12 @@ export const siteConfig = {
       price: "$14.99",
       period: "/mo",
       blurb:
-        "Unlimited messages on Fast, Creative, and Vision — plus image generation.",
+        "Unlimited messages on Fast, Creative, and Vision models.",
       cta: "Subscribe",
       features: [
         "Everything in Free",
         "Fast, Creative & Vision models",
         "Unlimited messages, no token metering",
-        "Image generation & editing",
         "32K context window",
         "Priority queue",
       ],
@@ -116,14 +115,13 @@ export const siteConfig = {
       price: "$29",
       period: "/mo",
       blurb:
-        "The flagship tier. Smart (GLM-4.7), full 256K context, parallel requests, and video.",
+        "The flagship tier. Smart (GLM-4.7), full 256K context, and parallel requests.",
       cta: "Subscribe",
       features: [
         "Everything in PRO",
         "Smart — GLM-4.7 (355B)",
         "Full 256K context window",
         "Parallel requests & priority response",
-        "Video generation & edits",
         "Early access to new models",
       ],
     },
@@ -136,7 +134,7 @@ export const siteConfig = {
     },
     {
       q: "Are there message limits?",
-      a: "No. Paid plans include unlimited messages and unlimited generations. We only limit how many requests run in parallel, which scales with your tier.",
+      a: "No. Paid plans include unlimited messages. We only limit how many requests run in parallel, which scales with your tier.",
     },
     {
       q: "How long is the context window?",

@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Uncensored AI chat with unlimited messages, 256K context, image & video generation, and zero-log privacy. Derestricted GLM-4.7 and Qwen3.5 models from $14.99/mo. Start today.",
+          "Uncensored AI chat with unlimited messages, 256K context, vision understanding, and zero-log privacy. Derestricted GLM-4.7 and Qwen3.5 models from $14.99/mo. Start today.",
       },
       {
         name: "keywords",
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Unlimited messages, 256K context, image & video generation, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
+          "Unlimited messages, 256K context, vision understanding, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -73,7 +73,7 @@ export const Route = createFileRoute("/")({
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web, iOS, Android, Windows, macOS",
           description:
-            "Uncensored AI chat platform with unlimited messages, 256K context windows, image and video generation, and zero-log privacy.",
+            "Uncensored AI chat platform with unlimited messages, 256K context windows, vision understanding, and zero-log privacy.",
           offers: [
             siteConfig.pricing.free,
             siteConfig.pricing.pro,
@@ -225,7 +225,7 @@ function Landing() {
               <Terminal className="w-3.5 h-3.5 text-accent" /> 256K context
             </div>
             <div className="flex items-center gap-1.5">
-              <Eye className="w-3.5 h-3.5 text-primary" /> Chat · Image · Video
+              <Eye className="w-3.5 h-3.5 text-primary" /> Chat · Vision · Code
             </div>
             <div className="flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-accent" /> Zero-log privacy
