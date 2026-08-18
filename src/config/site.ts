@@ -34,7 +34,7 @@ export const siteConfig = {
     {
       key: "smart",
       name: "Smart",
-      engine: "GLM-4.7 (355B)",
+      engine: "GLM-4.7 · 355B · 202K ctx",
       blurb:
         "Flagship deep-reasoning brain for planning, analysis, and long agentic runs.",
       badge: "Flagship",
@@ -42,28 +42,81 @@ export const siteConfig = {
     {
       key: "fast",
       name: "Fast",
-      engine: "GLM-4.5-Air-Derestricted",
+      engine: "MiMo-V2.5 · 310B · 131K ctx",
       blurb:
-        "The everyday workhorse — near-instant replies with refusal behavior removed.",
+        "The everyday workhorse — near-instant replies with reasoning kept on.",
       badge: "~80% of chats",
+    },
+    {
+      key: "deep",
+      name: "Long Context",
+      engine: "DeepSeek-V4-Flash · 284B · 512K ctx",
+      blurb:
+        "Half a million tokens in one thread — entire codebases, textbooks, and case files.",
+      badge: "512K context",
     },
     {
       key: "creative",
       name: "Creative",
-      engine: "Qwen3.5-35B-A3B-Derestricted",
+      engine: "Qwen3.5-27B-Derestricted · 262K ctx",
       blurb:
         "High-volume writing, scripts, and long-form drafting without slop or lectures.",
       badge: "Writing",
     },
     {
+      key: "uncensored",
+      name: "Derestricted",
+      engine: "GLM-4.6-Derestricted-v5 · 355B",
+      blurb:
+        "Refusal behavior removed at the weights level — it answers instead of lecturing.",
+      badge: "No refusals",
+    },
+    {
       key: "vision",
       name: "Vision",
-      engine: "Qwen3.5-27B-Derestricted · Gemma 4 31B",
+      engine: "Gemma-4-31B · 262K ctx · VLM",
       blurb:
         "Read screenshots, diagrams, documents, and photos with raw image understanding.",
       badge: "Multimodal",
     },
   ],
+
+  /**
+   * Full model catalog shown in the comparison table.
+   * params / context come straight from the hosted model cards.
+   */
+  catalog: [
+    { model: "GLM-4.7", type: "All-rounder", params: "355B", context: "202K", reasoning: true, vision: false, tier: "Power" },
+    { model: "GLM-4.6-Derestricted-v5", type: "Derestricted", params: "355B", context: "202K", reasoning: true, vision: false, tier: "PRO" },
+    { model: "DeepSeek-V4-Flash-0731", type: "All-rounder", params: "284B", context: "512K", reasoning: true, vision: false, tier: "Power" },
+    { model: "MiMo-V2.5", type: "All-rounder", params: "310B", context: "131K", reasoning: true, vision: false, tier: "Free" },
+    { model: "Qwen3.5-27B-Derestricted", type: "Derestricted", params: "27B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+    { model: "Gemma-4-31B-it", type: "Vision", params: "31B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+    { model: "Gemma-4-31B-Novelist", type: "Long-form writing", params: "31B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+    { model: "Gemma-4-31B-Gembrain-X-Core", type: "Roleplay / persona", params: "31B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+  ],
+
+  /**
+   * "They refuse, we answer" rows. Add or edit freely — the homepage table
+   * and the FAQ schema both read from here.
+   */
+  refusals: [
+    { task: "Academic research using clinical or forensic terminology", them: "Refused", us: "Answered in full" },
+    { task: "Long-form fiction, scripts, and morally grey characters", them: "Refused", us: "Answered in full" },
+    { task: "Advanced web scraping, headers, retries, and data formatting", them: "Refused", us: "Working script" },
+    { task: "Programmatic SEO copy at 40+ pages per run", them: "Throttled", us: "Unlimited output" },
+    { task: "Multi-document textbook and codebase analysis", them: "Token limits", us: "Up to 512K context" },
+    { task: "Direct-response sales copy with hard claims to review", them: "Refused", us: "Answered in full" },
+    { task: "Regex, shell, and system configuration generation", them: "Refused", us: "Answered in full" },
+    { task: "High-volume translation of technical documentation", them: "Rate limited", us: "Unlimited messages" },
+    { task: "Security research: parsing logs, payload analysis, hardening", them: "Refused", us: "Answered in full" },
+    { task: "Reverse-engineering your own file formats and binaries", them: "Refused", us: "Answered in full" },
+    { task: "Competitor teardowns and blunt strategic critique", them: "Hedged", us: "Straight answer" },
+    { task: "Medical or pharmacological literature summarisation", them: "Disclaimer wall", us: "Answered in full" },
+    { task: "Persona and roleplay writing that stays in character", them: "Breaks character", us: "Stays in character" },
+    { task: "Screenshot, diagram, and scanned-document reading", them: "Partial", us: "Full vision models" },
+  ],
+
 
   /** Core capabilities under one subscription. */
   modalities: [
