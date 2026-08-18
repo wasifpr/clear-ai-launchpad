@@ -28,38 +28,38 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Clear AI — Uncensored AI Chat with 256K Context, from $14.99/mo",
+        title: "Uncensored AI Chat — 512K Context, Unlimited Messages | Clear AI",
       },
       {
         name: "description",
         content:
-          "Uncensored AI chat with unlimited messages, 256K context, vision understanding, and zero-log privacy. Derestricted GLM-4.7 and Qwen3.5 models from $14.99/mo. Start today.",
+          "Uncensored AI chat that answers instead of refusing. Unlimited messages, up to 512K context, vision, zero-log privacy — GLM-4.7, DeepSeek-V4, MiMo-V2.5, Qwen3.5, Gemma 4. From $14.99/mo.",
       },
       {
         name: "keywords",
         content:
-          "uncensored AI, unrestricted AI chat, no refusal AI, 256K context AI, unlimited AI messages, derestricted GLM-4.7, private AI chat",
+          "uncensored AI, unrestricted AI chat, no refusal AI, AI without filters, 512K context AI, unlimited AI messages, derestricted GLM-4.7, DeepSeek-V4, MiMo-V2.5, Qwen3.5 derestricted, Gemma 4 vision, ChatGPT alternative, Claude alternative, zero-log AI",
       },
       {
         property: "og:title",
-        content: "Clear AI — Uncensored AI Chat with 256K Context",
+        content: "Clear AI — Uncensored AI Chat with up to 512K Context",
       },
       {
         property: "og:description",
         content:
-          "Unlimited messages, 256K context, vision understanding, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
+          "Six frontier models, unlimited messages, up to 512K context, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Clear AI — Uncensored AI Chat with 256K Context",
+        content: "Clear AI — Uncensored AI Chat with up to 512K Context",
       },
       {
         name: "twitter:description",
         content:
-          "Unlimited messages, 256K context, zero-log privacy. From $14.99/mo.",
+          "Six frontier models, unlimited messages, up to 512K context. From $14.99/mo.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -135,6 +135,9 @@ function Landing() {
           <div className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
             <a href="#models" className="hover:text-foreground transition">
               Models
+            </a>
+            <a href="#refusals" className="hover:text-foreground transition">
+              Refusals
             </a>
             <a href="#compare" className="hover:text-foreground transition">
               Compare
