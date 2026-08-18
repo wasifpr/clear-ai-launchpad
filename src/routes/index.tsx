@@ -94,10 +94,28 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: siteConfig.faq.map((item) => ({
+          mainEntity: [...siteConfig.faq, ...siteConfig.faqExtra].map((item) => ({
             "@type": "Question",
             name: item.q,
             acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Clear AI model catalog",
+          itemListElement: siteConfig.catalog.map((m, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "SoftwareApplication",
+              name: m.model,
+              applicationCategory: "BusinessApplication",
+              description: `${m.type} model — ${m.params} parameters, ${m.context} context window, available on the ${m.tier} plan.`,
+            },
           })),
         }),
       },
@@ -118,8 +136,8 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   const posthog = usePostHog();
-  const { links, pricing, footer, models, modalities, platforms, faq } =
-    siteConfig;
+  const { links, pricing, footer, models, modalities, platforms } = siteConfig;
+  const faq = [...siteConfig.faq, ...siteConfig.faqExtra];
 
   return (
     <main className="min-h-screen overflow-x-hidden">
