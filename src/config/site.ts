@@ -6,6 +6,9 @@
  */
 
 export const siteConfig = {
+  /** Canonical site URL — used by the sitemap. Change if you move domains. */
+  siteUrl: "https://clearaiagents.com",
+
   brand: {
     name: "Clear AI",
     tagline: "Uncensored, Unrestricted Agentic AI",
@@ -34,7 +37,7 @@ export const siteConfig = {
     {
       key: "smart",
       name: "Smart",
-      engine: "GLM-4.7 (355B)",
+      engine: "GLM-4.7 · 355B · 202K ctx",
       blurb:
         "Flagship deep-reasoning brain for planning, analysis, and long agentic runs.",
       badge: "Flagship",
@@ -42,28 +45,81 @@ export const siteConfig = {
     {
       key: "fast",
       name: "Fast",
-      engine: "GLM-4.5-Air-Derestricted",
+      engine: "MiMo-V2.5 · 310B · 131K ctx",
       blurb:
-        "The everyday workhorse — near-instant replies with refusal behavior removed.",
+        "The everyday workhorse — near-instant replies with reasoning kept on.",
       badge: "~80% of chats",
+    },
+    {
+      key: "deep",
+      name: "Long Context",
+      engine: "DeepSeek-V4-Flash · 284B · 512K ctx",
+      blurb:
+        "Half a million tokens in one thread — entire codebases, textbooks, and case files.",
+      badge: "512K context",
     },
     {
       key: "creative",
       name: "Creative",
-      engine: "Qwen3.5-35B-A3B-Derestricted",
+      engine: "Qwen3.5-27B-Derestricted · 262K ctx",
       blurb:
         "High-volume writing, scripts, and long-form drafting without slop or lectures.",
       badge: "Writing",
     },
     {
+      key: "uncensored",
+      name: "Derestricted",
+      engine: "GLM-4.6-Derestricted-v5 · 355B",
+      blurb:
+        "Refusal behavior removed at the weights level — it answers instead of lecturing.",
+      badge: "No refusals",
+    },
+    {
       key: "vision",
       name: "Vision",
-      engine: "Qwen3.5-27B-Derestricted · Gemma 4 31B",
+      engine: "Gemma-4-31B · 262K ctx · VLM",
       blurb:
         "Read screenshots, diagrams, documents, and photos with raw image understanding.",
       badge: "Multimodal",
     },
   ],
+
+  /**
+   * Full model catalog shown in the comparison table.
+   * params / context come straight from the hosted model cards.
+   */
+  catalog: [
+    { model: "GLM-4.7", type: "All-rounder", params: "355B", context: "202K", reasoning: true, vision: false, tier: "Power" },
+    { model: "GLM-4.6-Derestricted-v5", type: "Derestricted", params: "355B", context: "202K", reasoning: true, vision: false, tier: "PRO" },
+    { model: "DeepSeek-V4-Flash-0731", type: "All-rounder", params: "284B", context: "512K", reasoning: true, vision: false, tier: "Power" },
+    { model: "MiMo-V2.5", type: "All-rounder", params: "310B", context: "131K", reasoning: true, vision: false, tier: "Free" },
+    { model: "Qwen3.5-27B-Derestricted", type: "Derestricted", params: "27B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+    { model: "Gemma-4-31B-it", type: "Vision", params: "31B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+    { model: "Gemma-4-31B-Novelist", type: "Long-form writing", params: "31B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+    { model: "Gemma-4-31B-Gembrain-X-Core", type: "Roleplay / persona", params: "31B", context: "262K", reasoning: true, vision: true, tier: "PRO" },
+  ],
+
+  /**
+   * "They refuse, we answer" rows. Add or edit freely — the homepage table
+   * and the FAQ schema both read from here.
+   */
+  refusals: [
+    { task: "Academic research using clinical or forensic terminology", them: "Refused", us: "Answered in full" },
+    { task: "Long-form fiction, scripts, and morally grey characters", them: "Refused", us: "Answered in full" },
+    { task: "Advanced web scraping, headers, retries, and data formatting", them: "Refused", us: "Working script" },
+    { task: "Programmatic SEO copy at 40+ pages per run", them: "Throttled", us: "Unlimited output" },
+    { task: "Multi-document textbook and codebase analysis", them: "Token limits", us: "Up to 512K context" },
+    { task: "Direct-response sales copy with hard claims to review", them: "Refused", us: "Answered in full" },
+    { task: "Regex, shell, and system configuration generation", them: "Refused", us: "Answered in full" },
+    { task: "High-volume translation of technical documentation", them: "Rate limited", us: "Unlimited messages" },
+    { task: "Security research: parsing logs, payload analysis, hardening", them: "Refused", us: "Answered in full" },
+    { task: "Reverse-engineering your own file formats and binaries", them: "Refused", us: "Answered in full" },
+    { task: "Competitor teardowns and blunt strategic critique", them: "Hedged", us: "Straight answer" },
+    { task: "Medical or pharmacological literature summarisation", them: "Disclaimer wall", us: "Answered in full" },
+    { task: "Persona and roleplay writing that stays in character", them: "Breaks character", us: "Stays in character" },
+    { task: "Screenshot, diagram, and scanned-document reading", them: "Partial", us: "Full vision models" },
+  ],
+
 
   /** Core capabilities under one subscription. */
   modalities: [
@@ -130,7 +186,7 @@ export const siteConfig = {
   faq: [
     {
       q: "What models does Clear AI run?",
-      a: "Clear AI runs derestricted open-weight models — GLM-4.7, GLM-4.5-Air-Derestricted, Qwen3.5-Derestricted, and Gemma 4 vision models — behind friendly names: Smart, Fast, Creative, and Vision.",
+      a: "Clear AI runs derestricted open-weight frontier models — GLM-4.7 (355B), GLM-4.6-Derestricted-v5, DeepSeek-V4-Flash (512K context), MiMo-V2.5 (310B), Qwen3.5-27B-Derestricted, and Gemma 4 31B vision models — behind friendly names: Smart, Fast, Long Context, Creative, Derestricted, and Vision.",
     },
     {
       q: "Are there message limits?",
@@ -138,7 +194,7 @@ export const siteConfig = {
     },
     {
       q: "How long is the context window?",
-      a: "Up to 256K tokens (262,144) on the Power tier — enough for entire codebases, textbooks, or multi-document research in a single conversation.",
+      a: "Up to 512K tokens (524,288) on DeepSeek-V4-Flash and 262K on the Gemma 4 and Qwen3.5 models — enough for entire codebases, textbooks, or multi-document research in a single conversation.",
     },
     {
       q: "Do you store my chats?",
@@ -151,6 +207,26 @@ export const siteConfig = {
     {
       q: "Can I cancel anytime?",
       a: "Yes. Subscriptions are month-to-month and cancel in one click from your account settings.",
+    },
+  ],
+
+  /** Extra FAQ entries appended for SEO/GEO coverage. */
+  faqExtra: [
+    {
+      q: "What can Clear AI answer that ChatGPT, Claude, or Gemini refuse?",
+      a: "Clinical and forensic research terminology, long-form fiction with morally grey characters, web scraping and regex scripts, security research and log analysis, blunt competitor teardowns, direct-response sales copy, high-volume translation, and persona roleplay that stays in character.",
+    },
+    {
+      q: "Is Clear AI a good ChatGPT alternative?",
+      a: "Yes. For $14.99/mo you get unlimited messages on derestricted frontier models with up to 512K context, vision, and zero-log privacy — no token metering and no refusal wall on legitimate professional work.",
+    },
+    {
+      q: "Which model should I pick?",
+      a: "Use Fast (MiMo-V2.5) for everyday chat, Smart (GLM-4.7) for planning and deep reasoning, Long Context (DeepSeek-V4-Flash) for whole codebases and document sets, Creative (Qwen3.5-Derestricted) for writing, and Vision (Gemma 4 31B) for screenshots and scanned documents.",
+    },
+    {
+      q: "Do you add new models?",
+      a: "Yes. New frontier and derestricted models are added as they ship, and Power subscribers get early access at no extra cost.",
     },
   ],
 

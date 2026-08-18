@@ -28,38 +28,38 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Clear AI — Uncensored AI Chat with 256K Context, from $14.99/mo",
+        title: "Uncensored AI Chat — 512K Context, Unlimited Messages | Clear AI",
       },
       {
         name: "description",
         content:
-          "Uncensored AI chat with unlimited messages, 256K context, vision understanding, and zero-log privacy. Derestricted GLM-4.7 and Qwen3.5 models from $14.99/mo. Start today.",
+          "Uncensored AI chat that answers instead of refusing. Unlimited messages, up to 512K context, vision, zero-log privacy — GLM-4.7, DeepSeek-V4, MiMo-V2.5, Qwen3.5, Gemma 4. From $14.99/mo.",
       },
       {
         name: "keywords",
         content:
-          "uncensored AI, unrestricted AI chat, no refusal AI, 256K context AI, unlimited AI messages, derestricted GLM-4.7, private AI chat",
+          "uncensored AI, unrestricted AI chat, no refusal AI, AI without filters, 512K context AI, unlimited AI messages, derestricted GLM-4.7, DeepSeek-V4, MiMo-V2.5, Qwen3.5 derestricted, Gemma 4 vision, ChatGPT alternative, Claude alternative, zero-log AI",
       },
       {
         property: "og:title",
-        content: "Clear AI — Uncensored AI Chat with 256K Context",
+        content: "Clear AI — Uncensored AI Chat with up to 512K Context",
       },
       {
         property: "og:description",
         content:
-          "Unlimited messages, 256K context, vision understanding, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
+          "Six frontier models, unlimited messages, up to 512K context, zero-log privacy. From $14.99/mo. No lectures. No refusals.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Clear AI — Uncensored AI Chat with 256K Context",
+        content: "Clear AI — Uncensored AI Chat with up to 512K Context",
       },
       {
         name: "twitter:description",
         content:
-          "Unlimited messages, 256K context, zero-log privacy. From $14.99/mo.",
+          "Six frontier models, unlimited messages, up to 512K context. From $14.99/mo.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -94,10 +94,28 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: siteConfig.faq.map((item) => ({
+          mainEntity: [...siteConfig.faq, ...siteConfig.faqExtra].map((item) => ({
             "@type": "Question",
             name: item.q,
             acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Clear AI model catalog",
+          itemListElement: siteConfig.catalog.map((m, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "SoftwareApplication",
+              name: m.model,
+              applicationCategory: "BusinessApplication",
+              description: `${m.type} model — ${m.params} parameters, ${m.context} context window, available on the ${m.tier} plan.`,
+            },
           })),
         }),
       },
@@ -118,8 +136,8 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   const posthog = usePostHog();
-  const { links, pricing, footer, models, modalities, platforms, faq } =
-    siteConfig;
+  const { links, pricing, footer, models, modalities, platforms } = siteConfig;
+  const faq = [...siteConfig.faq, ...siteConfig.faqExtra];
 
   return (
     <main className="min-h-screen overflow-x-hidden">
@@ -135,6 +153,9 @@ function Landing() {
           <div className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
             <a href="#models" className="hover:text-foreground transition">
               Models
+            </a>
+            <a href="#refusals" className="hover:text-foreground transition">
+              Refusals
             </a>
             <a href="#compare" className="hover:text-foreground transition">
               Compare
@@ -242,19 +263,27 @@ function Landing() {
               The lineup
             </p>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Four brains.{" "}
+              Six brains.{" "}
               <span className="text-gradient">One clean interface.</span>
             </h2>
             <p className="mt-5 text-muted-foreground">
               Pick a brain from a dropdown — no model files, no keys, no
-              configuration. Every model runs derestricted with up to 256K
+              configuration. Derestricted frontier models with up to 512K
               context.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {models.map((m, i) => {
-              const Icon = [Brain, Zap, PenLine, Eye][i] ?? Brain;
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {models.map((m) => {
+              const Icon =
+                ({
+                  smart: Brain,
+                  fast: Zap,
+                  deep: Terminal,
+                  creative: PenLine,
+                  uncensored: Shield,
+                  vision: Eye,
+                } as Record<string, typeof Brain>)[m.key] ?? Brain;
               return (
                 <article
                   key={m.key}
@@ -460,6 +489,140 @@ function Landing() {
           </div>
         </div>
       </section>
+
+      {/* 2b. Refusal table — what they block, what we answer */}
+      <section id="refusals" className="relative py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+              Refusal comparison
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              14 things they won&apos;t do.{" "}
+              <span className="text-gradient">We do all of them.</span>
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Real prompts that get blocked, hedged, or throttled on
+              ChatGPT, Claude, and Gemini — and how Clear AI handles them.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm">
+            <table className="w-full text-left text-sm">
+              <caption className="sr-only">
+                Clear AI vs ChatGPT, Claude and Gemini refusal comparison
+              </caption>
+              <thead>
+                <tr className="border-b border-border/40 text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <th scope="col" className="px-4 sm:px-6 py-4 font-semibold">
+                    Task
+                  </th>
+                  <th scope="col" className="px-3 sm:px-6 py-4 font-semibold">
+                    Them
+                  </th>
+                  <th scope="col" className="px-3 sm:px-6 py-4 font-semibold">
+                    Clear AI
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {siteConfig.refusals.map((row) => (
+                  <tr
+                    key={row.task}
+                    className="border-b border-border/20 last:border-0 hover:bg-primary/[0.04] transition"
+                  >
+                    <td className="px-4 sm:px-6 py-4 align-top">{row.task}</td>
+                    <td className="px-3 sm:px-6 py-4 align-top whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1.5 text-destructive/80">
+                        <X className="w-3.5 h-3.5 shrink-0" />
+                        <span className="text-xs">{row.them}</span>
+                      </span>
+                    </td>
+                    <td className="px-3 sm:px-6 py-4 align-top whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1.5 text-primary">
+                        <Check className="w-3.5 h-3.5 shrink-0" />
+                        <span className="text-xs font-medium">{row.us}</span>
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 text-center">
+            <a
+              href="#pricing"
+              data-ph-event="cta_clicked"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:opacity-90 transition"
+            >
+              Get answers for {pricing.pro.price}
+              {pricing.pro.period}
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 2c. Full model catalog */}
+      <section id="catalog" className="relative pb-20 md:pb-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              The full <span className="text-gradient">model catalog</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground text-sm">
+              Every model available inside Clear AI, with real parameter counts
+              and context windows. New models are added as they ship.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <caption className="sr-only">
+                Clear AI model catalog with parameters and context windows
+              </caption>
+              <thead>
+                <tr className="border-b border-border/40 text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <th scope="col" className="px-5 py-4 font-semibold">Model</th>
+                  <th scope="col" className="px-4 py-4 font-semibold">Best for</th>
+                  <th scope="col" className="px-4 py-4 font-semibold">Params</th>
+                  <th scope="col" className="px-4 py-4 font-semibold">Context</th>
+                  <th scope="col" className="px-4 py-4 font-semibold">Vision</th>
+                  <th scope="col" className="px-4 py-4 font-semibold">Plan</th>
+                </tr>
+              </thead>
+              <tbody>
+                {siteConfig.catalog.map((m) => (
+                  <tr
+                    key={m.model}
+                    className="border-b border-border/20 last:border-0 hover:bg-accent/[0.04] transition"
+                  >
+                    <td className="px-5 py-4 font-mono text-xs text-accent/90">
+                      {m.model}
+                    </td>
+                    <td className="px-4 py-4 text-muted-foreground text-xs">
+                      {m.type}
+                    </td>
+                    <td className="px-4 py-4 text-xs">{m.params}</td>
+                    <td className="px-4 py-4 text-xs">{m.context}</td>
+                    <td className="px-4 py-4 text-xs">
+                      {m.vision ? (
+                        <Check className="w-4 h-4 text-primary" />
+                      ) : (
+                        <X className="w-4 h-4 text-muted-foreground/50" />
+                      )}
+                    </td>
+                    <td className="px-4 py-4 text-xs font-semibold">{m.tier}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Social proof */}
       <TrustSection />
