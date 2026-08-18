@@ -4,7 +4,7 @@ import { SiteHeader, SiteFooter } from "@/components/blog/BlogChrome";
 import { TrustStrip } from "@/components/TrustSection";
 
 import { getPost, formatDate, type Block, type Post } from "@/lib/blog-data";
-import { siteConfig } from "@/config/site";
+import { siteConfig, absUrl } from "@/config/site";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -22,13 +22,17 @@ export const Route = createFileRoute("/blog/$slug")({
       };
     }
     const { post } = loaderData;
-    const url = `/blog/${params.slug}`;
+    const url = absUrl(`/blog/${params.slug}`);
     return {
       meta: [
         { title: `${post.title} — Clear AI Blog` },
         { name: "description", content: post.excerpt },
         { name: "author", content: post.author },
         { property: "article:published_time", content: post.date },
+        { property: "article:modified_time", content: post.date },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: post.title },
+        { name: "twitter:description", content: post.excerpt },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.excerpt },
         { property: "og:type", content: "article" },
@@ -47,6 +51,7 @@ export const Route = createFileRoute("/blog/$slug")({
             datePublished: post.date,
             dateModified: post.date,
             mainEntityOfPage: url,
+            publisher: { "@type": "Organization", name: "Clear AI", url: absUrl("/") },
             articleSection: post.category,
           }),
         },
@@ -56,8 +61,8 @@ export const Route = createFileRoute("/blog/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-              { "@type": "ListItem", position: 2, name: "Blog", item: "/blog" },
+              { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+              { "@type": "ListItem", position: 2, name: "Blog", item: absUrl("/blog") },
               { "@type": "ListItem", position: 3, name: post.title, item: url },
             ],
           }),

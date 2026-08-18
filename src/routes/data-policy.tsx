@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { absUrl } from "@/config/site";
 import { LegalPage, LegalSection, LegalList } from "@/components/legal/LegalPage";
 
 export const Route = createFileRoute("/data-policy")({
@@ -20,8 +21,10 @@ export const Route = createFileRoute("/data-policy")({
           "Retention periods, deletion requests, and exceptions for data held by Clear AI Agents.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: absUrl("/data-policy") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: absUrl("/data-policy") }],
   }),
   component: DataPolicyPage,
 });

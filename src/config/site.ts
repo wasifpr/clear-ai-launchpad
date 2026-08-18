@@ -305,3 +305,8 @@ export const siteConfig = {
       "You are interacting with an AI. While our models are unfiltered for productivity, we maintain hard-line safety filters against strictly illegal content.",
   },
 } as const;
+
+
+/** Build an absolute URL from a site-relative path (for canonical, og:url, JSON-LD). */
+export const absUrl = (path: string) =>
+  `${siteConfig.siteUrl.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;

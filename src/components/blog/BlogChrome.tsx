@@ -48,7 +48,7 @@ export function SiteFooter() {
     <footer className="border-t border-border/40 mt-12">
       <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2.5">
-          <img src={logo} alt="" width={24} height={24} className="h-6 w-6" loading="lazy" />
+          <img src={logo} alt="Clear AI logo" width={24} height={24} className="h-6 w-6" loading="lazy" />
           <span className="font-bold text-sm">
             Clear<span className="text-gradient">AI</span>
           </span>
