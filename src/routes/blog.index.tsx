@@ -5,7 +5,7 @@ import { TrustStrip } from "@/components/TrustSection";
 
 import { getFeaturedPost, getOtherPosts, formatDate, posts } from "@/lib/blog-data";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "The Clear AI Blog — Prompt Engineering & AI Research" },
