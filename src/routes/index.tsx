@@ -15,6 +15,8 @@ import {
   Image as ImageIcon,
   Smartphone,
   ChevronDown,
+  MessageCircle,
+  Linkedin,
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import whatsappQrAsset from "@/assets/whatsapp-community-qr.jpeg.asset.json";
