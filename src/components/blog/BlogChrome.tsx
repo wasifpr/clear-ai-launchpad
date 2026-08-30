@@ -3,6 +3,7 @@ import { ArrowRight, Shield } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
 import { siteConfig } from "@/config/site";
 import { LegalLinks } from "@/components/LegalLinks";
+import { SocialLinks } from "@/components/SocialLinks";
 
 
 export function SiteHeader() {
