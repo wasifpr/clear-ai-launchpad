@@ -15,11 +15,15 @@ import {
   Image as ImageIcon,
   Smartphone,
   ChevronDown,
+  MessageCircle,
+  Linkedin,
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
+import whatsappQrAsset from "@/assets/whatsapp-community-qr.jpeg.asset.json";
 import { siteConfig, absUrl } from "@/config/site";
 import { TrustSection } from "@/components/TrustSection";
 import { LegalLinks } from "@/components/LegalLinks";
+import { SocialLinks } from "@/components/SocialLinks";
 import { TrackSectionView, usePostHog } from "@/lib/posthog";
 
 
@@ -164,6 +168,9 @@ function Landing() {
             <Link to="/blog" className="hover:text-foreground transition">
               Blog
             </Link>
+            <a href="#community" className="hover:text-foreground transition">
+              Community
+            </a>
             <a href="#contact" className="hover:text-foreground transition">
               Contact
             </a>
@@ -818,7 +825,72 @@ function Landing() {
         </div>
       </section>
 
-      {/* 6. Contact & Footer */}
+      {/* 6. Community */}
+      <section id="community" className="relative py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+              Community
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Join the <span className="text-gradient">Clear AI community.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Get updates, share prompts, and ask questions on LinkedIn or WhatsApp.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
+            <a
+              href={links.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm p-6 md:p-8 hover:border-primary/40 transition flex flex-col items-center text-center"
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 border border-primary/30 mb-5">
+                <MessageCircle className="w-6 h-6 text-primary" aria-hidden />
+              </div>
+              <h3 className="text-lg font-bold tracking-tight">WhatsApp Community</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Scan the QR code or tap to join the group. Daily tips, model updates, and support.
+              </p>
+              <img
+                src={whatsappQrAsset.url}
+                alt="WhatsApp group QR code for Clear AI Agents"
+                width={200}
+                height={200}
+                className="mt-6 rounded-xl border border-border/40 bg-white p-2 w-44 h-44 object-contain"
+                loading="lazy"
+              />
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:underline">
+                Join on WhatsApp <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </a>
+
+            <a
+              href={links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm p-6 md:p-8 hover:border-primary/40 transition flex flex-col items-center text-center"
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 border border-primary/30 mb-5">
+                <Linkedin className="w-6 h-6 text-primary" aria-hidden />
+              </div>
+              <h3 className="text-lg font-bold tracking-tight">LinkedIn Page</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Follow Clear AI Agents for product updates, use cases, and behind-the-scenes builds.
+              </p>
+              <div className="mt-auto pt-8">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:underline">
+                  Follow on LinkedIn <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Contact & Footer */}
       <section id="contact" className="relative py-24 md:py-32">
         <div className="max-w-2xl mx-auto px-6">
           <div className="text-center mb-10">
@@ -939,7 +1011,10 @@ function Landing() {
             © {new Date().getFullYear()} Clear AI
           </p>
         </div>
-        <LegalLinks className="pb-8" />
+        <div className="max-w-6xl mx-auto px-6 pb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <LegalLinks />
+          <SocialLinks />
+        </div>
 
         <div className="border-t border-border/40 py-4 text-center text-[11px] text-muted-foreground/70 px-6 leading-relaxed max-w-3xl mx-auto">
           {footer.aiDisclosure}
