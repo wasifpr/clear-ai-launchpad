@@ -852,16 +852,12 @@ function Landing() {
               </div>
               <h3 className="text-lg font-bold tracking-tight">WhatsApp Community</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Scan the QR code or tap to join the group. Daily tips, model updates, and support.
+                Tap to join the group. Daily tips, model updates, and support.
               </p>
-              <img
-                src={whatsappQrAsset.url}
-                alt="WhatsApp group QR code for Clear AI Agents"
-                width={200}
-                height={200}
-                className="mt-6 rounded-xl border border-border/40 bg-white p-2 w-44 h-44 object-contain"
-                loading="lazy"
-              />
+              <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-neon group-hover:brightness-110 transition">
+                <MessageCircle className="w-4 h-4" aria-hidden />
+                Join WhatsApp Group
+              </span>
               <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:underline">
                 Join on WhatsApp <ArrowRight className="w-3.5 h-3.5" />
               </span>
