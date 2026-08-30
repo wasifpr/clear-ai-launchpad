@@ -1,0 +1,38 @@
+# Version control & CI
+.git
+.gitignore
+.gitattributes
+
+# Dependencies (installed fresh inside the image)
+node_modules
+
+# Build output (rebuilt inside the image)
+.output
+dist
+.vinxi
+
+# Lovable / workspace internals
+.lovable
+.workspace
+*.log
+
+# Env & secrets (Coolify injects env at runtime)
+.env
+.env.*
+
+# Editor & OS noise
+.vscode
+.idea
+.DS_Store
+
+# Docs & tooling not needed at runtime
+*.md
+.prettierrc
+.prettierignore
+eslint.config.js
+bunfig.toml
+
+# Local caches
+.cache
+.turbo
+coverage
