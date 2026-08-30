@@ -39,6 +39,187 @@ const gradientD =
 
 export const posts: Post[] = [
   {
+    slug: "7-prompts-that-feel-illegal",
+    title: "7 Prompts That Feel Illegal to Know (But Aren't)",
+    excerpt:
+      "These copy-paste prompts turn any capable model into a research analyst, code reviewer, and personal editor — in under 60 seconds each.",
+    author: "The Clear AI Team",
+    date: "2026-08-30",
+    readingMinutes: 6,
+    category: "Prompt Engineering",
+    cover: gradientA,
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "The gap between a mediocre AI answer and a jaw-dropping one is almost never the model — it's the prompt. These seven prompts are the ones our power users keep coming back to. They work on GLM-4.7, DeepSeek-V4, and Qwen3.5 out of the box. Copy them verbatim and fill in the brackets.",
+      },
+      { type: "h2", text: "1. The Brutal Editor" },
+      {
+        type: "code",
+        lang: "text",
+        text: `Act as a ruthless senior editor. Read the text below and return:
+1. The weakest paragraph and WHY it fails
+2. Every sentence that can be cut without losing meaning
+3. A rewritten version that is 30% shorter and 2x punchier
+
+TEXT: [paste your draft]`,
+      },
+      {
+        type: "p",
+        text: "Most people ask AI to 'improve' their writing and get polite nothing. Asking for what's broken first forces the model to actually evaluate instead of flatter.",
+      },
+      { type: "h2", text: "2. The 60-Second Expert" },
+      {
+        type: "code",
+        lang: "text",
+        text: `I need to sound credible about [topic] in a meeting in one hour.
+Give me:
+- The 5 concepts I must understand
+- The 3 questions a real expert would ask
+- The 2 common misconceptions I should never repeat
+Use plain language. No fluff.`,
+      },
+      { type: "h2", text: "3. The Code Autopsy" },
+      {
+        type: "code",
+        lang: "text",
+        text: `Review this code like a staff engineer doing a hostile code review.
+Find: bugs, security issues, performance traps, and one thing you'd
+refuse to merge. Rank findings by severity. Be specific, cite line numbers.
+
+CODE: [paste code]`,
+      },
+      {
+        type: "p",
+        text: "'Hostile' is the magic word. Without it, models default to gentle suggestions. With it, you get the review your code actually needs.",
+      },
+      { type: "h2", text: "4. The Decision Matrix" },
+      {
+        type: "code",
+        lang: "text",
+        text: `I'm deciding between [option A] and [option B].
+Build a decision matrix with criteria I haven't thought of.
+Score both options, then argue FOR the loser to stress-test the winner.
+End with a clear recommendation and the one condition that would flip it.`,
+      },
+      { type: "h2", text: "5. The Explanation Ladder" },
+      {
+        type: "code",
+        lang: "text",
+        text: `Explain [concept] five times:
+1. To a 5-year-old
+2. To a high schooler
+3. To a college student
+4. To a professional in the field
+5. To an expert who thinks it's overrated`,
+      },
+      {
+        type: "p",
+        text: "This one is a cheat code for learning. If you can follow all five rungs, you actually understand the concept.",
+      },
+      { type: "h2", text: "6. The Objection Crusher" },
+      {
+        type: "code",
+        lang: "text",
+        text: `Here is my [sales page / proposal / pitch].
+List the 10 strongest objections a skeptical reader would have.
+Then rewrite the pitch so each objection is answered BEFORE it's raised.
+
+PITCH: [paste text]`,
+      },
+      { type: "h2", text: "7. The Second-Order Thinker" },
+      {
+        type: "code",
+        lang: "text",
+        text: `I'm planning to [decision].
+Don't tell me if it's a good idea. Instead:
+1. What happens immediately after I do this?
+2. What happens in 6 months because of that?
+3. What happens in 2 years because of THAT?
+Map the full chain of consequences, including the ones nobody mentions.`,
+      },
+      { type: "h2", text: "Why these work everywhere" },
+      {
+        type: "p",
+        text: "Every prompt here does the same three things: assigns a sharp role, demands a specific output shape, and removes the model's escape hatch of generic advice. That's the entire formula. Save these seven, and you'll never stare at a blank chat box again.",
+      },
+      {
+        type: "quote",
+        text: "The model isn't the moat. The prompt is.",
+      },
+    ],
+  },
+  {
+    slug: "what-is-an-ai-agent-explained",
+    title: "AI Agents Explained Like You're Busy: What They Are and Why Everyone's Talking About Them",
+    excerpt:
+      "No jargon, no hype. A plain-English breakdown of what 'agentic AI' actually means, what it can do for you today, and where the hype ends.",
+    author: "The Clear AI Team",
+    date: "2026-08-23",
+    readingMinutes: 7,
+    category: "AI Basics",
+    cover: gradientB,
+    content: [
+      {
+        type: "p",
+        text: "You've seen the word 'agentic' everywhere this year. Here's the honest version of what it means — no marketing, no computer science degree required.",
+      },
+      { type: "h2", text: "Chatbot vs. agent: the one-sentence difference" },
+      {
+        type: "p",
+        text: "A chatbot answers. An agent acts. Ask a chatbot to 'summarize this article' and it summarizes. Ask an agent to 'research competitors and put a comparison table in my docs' and it plans the steps, searches, reads, compares, and writes the table — checking its own work along the way.",
+      },
+      {
+        type: "quote",
+        text: "A chatbot is a very smart answering machine. An agent is a very fast junior employee.",
+      },
+      { type: "h2", text: "The three ingredients of every AI agent" },
+      {
+        type: "list",
+        items: [
+          "A GOAL — what you want done, stated as an outcome",
+          "TOOLS — things it can use (search, code execution, files, APIs)",
+          "A LOOP — plan, act, check the result, adjust, repeat",
+        ],
+      },
+      {
+        type: "p",
+        text: "That loop is the whole trick. Instead of one shot at an answer, the model gets to try, see what happened, and try again. It's the same reason a human with Google beats a genius in an empty room.",
+      },
+      { type: "h2", text: "What agents are genuinely good at today" },
+      {
+        type: "list",
+        items: [
+          "Research: reading 20 sources and handing you the 5 that matter",
+          "Coding: writing, running, and fixing scripts until they work",
+          "Data cleanup: turning messy exports into clean, formatted tables",
+          "Drafting: producing first drafts of documents from scattered notes",
+          "Monitoring: watching a feed or inbox and flagging what matters",
+        ],
+      },
+      { type: "h2", text: "Where the hype runs ahead of reality" },
+      {
+        type: "p",
+        text: "Agents still fumble tasks with lots of hidden steps, ambiguous instructions, or no clear 'done' state. 'Plan my whole business launch' fails. 'Find me 10 venues in Dubai under AED 5,000 with capacity for 80 people and put them in a table' works beautifully. Specificity is everything.",
+      },
+      { type: "h2", text: "How to get useful results from an agent today" },
+      {
+        type: "list",
+        items: [
+          "State the outcome, not the process — 'a table comparing X' beats 'look into X'",
+          "Give it the tools it needs and say what they're called",
+          "Define what 'done' looks like before it starts",
+          "Start small: one task, one loop, then chain tasks together",
+        ],
+      },
+      {
+        type: "p",
+        text: "On Clear AI, models like GLM-4.7 and DeepSeek-V4 are built for exactly this kind of multi-step reasoning — and with up to 512K context, you can hand them entire document sets instead of snippets. The agent era isn't coming. It's already sitting in your chat box, waiting for a goal worth pursuing.",
+      },
+    ],
+  },
+  {
     slug: "agentic-prompts-deepseek-v4",
     title: "How to Write Agentic Prompts for DeepSeek-V4",
     excerpt:
