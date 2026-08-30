@@ -19,14 +19,16 @@ export const siteConfig = {
   // Checkout / CTA links — change these to your live payment URLs.
   links: {
     checkout:
-      "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
+      "https://buy.polar.sh/polar_cl_o957KmRur3XQbLwFPYt1In6cMVBdt9A2TmTv71zwymA",
     proCheckout:
-      "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
+      "https://buy.polar.sh/polar_cl_o957KmRur3XQbLwFPYt1In6cMVBdt9A2TmTv71zwymA",
     powerCheckout:
-      "https://buy.polar.sh/polar_cl_2wSrYoeloUYMaXM47ZSBSI1cyW3S7sMbfje0x1fieB6",
+      "https://buy.polar.sh/polar_cl_o957KmRur3XQbLwFPYt1In6cMVBdt9A2TmTv71zwymA",
     signup: "https://chat.clearaiagents.com",
     login: "https://chat.clearaiagents.com",
     support: "mailto:support@clearaiagents.com",
+    whatsapp: "https://chat.whatsapp.com/IGAyGkGRygPJhRYBVfVE0F",
+    linkedin: "https://www.linkedin.com/company/clearaiagents",
   },
 
   /**
