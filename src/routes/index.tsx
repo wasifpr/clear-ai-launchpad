@@ -168,6 +168,9 @@ function Landing() {
             <Link to="/blog" className="hover:text-foreground transition">
               Blog
             </Link>
+            <a href="#community" className="hover:text-foreground transition">
+              Community
+            </a>
             <a href="#contact" className="hover:text-foreground transition">
               Contact
             </a>
