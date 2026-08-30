@@ -17,9 +17,11 @@ import {
   ChevronDown,
 } from "lucide-react";
 import logo from "@/assets/clear-ai-logo.png";
+import whatsappQrAsset from "@/assets/whatsapp-community-qr.jpeg.asset.json";
 import { siteConfig, absUrl } from "@/config/site";
 import { TrustSection } from "@/components/TrustSection";
 import { LegalLinks } from "@/components/LegalLinks";
+import { SocialLinks } from "@/components/SocialLinks";
 import { TrackSectionView, usePostHog } from "@/lib/posthog";
 
 
