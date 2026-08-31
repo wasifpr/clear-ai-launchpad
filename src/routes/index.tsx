@@ -645,6 +645,22 @@ function Landing() {
             <p className="mt-5 text-muted-foreground">
               Start free. Upgrade when you need more power.
             </p>
+            {siteConfig.promo.active && (
+              <div className="mt-7 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl neon-border bg-card/40 backdrop-blur-sm px-6 py-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/15 border border-accent/40 px-3 py-1 text-xs font-bold text-accent uppercase tracking-wider">
+                  {siteConfig.promo.trial}
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  Plus <span className="font-bold text-foreground">{siteConfig.promo.percent}% off</span> your first months — code
+                </span>
+                <code className="rounded-lg bg-primary/15 border border-primary/40 px-3 py-1 text-sm font-black tracking-widest text-primary">
+                  {siteConfig.promo.code}
+                </code>
+                <span className="text-xs text-muted-foreground">
+                  valid until {siteConfig.promo.validUntil}
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
