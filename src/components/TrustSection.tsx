@@ -127,7 +127,7 @@ export function TrustSection() {
           </ul>
           <a
             href={links.checkout}
-            data-polar-checkout
+            target="_blank" rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
           >
             Start for $14.99/mo
@@ -179,7 +179,7 @@ export function TrustStrip() {
           </p>
           <a
             href={links.checkout}
-            data-polar-checkout
+            target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
           >
             Start Free Trial
