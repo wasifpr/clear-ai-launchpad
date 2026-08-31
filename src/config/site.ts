@@ -138,6 +138,15 @@ export const siteConfig = {
     { name: "Desktop", how: "Chrome / Edge / Brave → Install in URL bar" },
   ],
 
+  /** Limited-time offer — shown above pricing. Set `active: false` to hide. */
+  promo: {
+    active: true,
+    trial: "3-day free trial",
+    code: "OFF20",
+    percent: 20,
+    validUntil: "October 2026",
+  },
+
   // Pricing — edit price, period, or features here.
   pricing: {
     free: {
