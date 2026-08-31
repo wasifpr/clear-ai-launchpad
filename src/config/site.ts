@@ -138,6 +138,15 @@ export const siteConfig = {
     { name: "Desktop", how: "Chrome / Edge / Brave → Install in URL bar" },
   ],
 
+  /** Limited-time offer — shown above pricing. Set `active: false` to hide. */
+  promo: {
+    active: true,
+    trial: "3-day free trial",
+    code: "OFF20",
+    percent: 20,
+    validUntil: "October 2026",
+  },
+
   // Pricing — edit price, period, or features here.
   pricing: {
     free: {
@@ -159,8 +168,9 @@ export const siteConfig = {
       period: "/mo",
       blurb:
         "Unlimited messages on Fast, Creative, and Vision models.",
-      cta: "Subscribe",
+      cta: "Start 3-Day Free Trial",
       features: [
+        "3-day free trial included",
         "Everything in Free",
         "Fast, Creative & Vision models",
         "Unlimited messages, no token metering",
@@ -174,8 +184,9 @@ export const siteConfig = {
       period: "/mo",
       blurb:
         "The flagship tier. Smart (GLM-4.7), full 256K context, and parallel requests.",
-      cta: "Subscribe",
+      cta: "Start 3-Day Free Trial",
       features: [
+        "3-day free trial included",
         "Everything in PRO",
         "Smart — GLM-4.7 (355B)",
         "Full 256K context window",
