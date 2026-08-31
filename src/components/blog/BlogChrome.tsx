@@ -33,7 +33,7 @@ export function SiteHeader() {
         </div>
         <a
           href={links.checkout}
-          data-polar-checkout
+          target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
         >
           Get Started <ArrowRight className="w-3.5 h-3.5" />

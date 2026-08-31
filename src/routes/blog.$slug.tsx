@@ -243,7 +243,7 @@ function InArticleCTA() {
       <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <a
           href={links.powerCheckout}
-          data-polar-checkout
+          target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:shadow-glow transition-all hover:scale-[1.02]"
         >
           Start Free Trial

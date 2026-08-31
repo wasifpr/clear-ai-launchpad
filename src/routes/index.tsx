@@ -177,7 +177,7 @@ function Landing() {
           </div>
           <a
             href={links.checkout}
-            data-polar-checkout
+            target="_blank" rel="noopener noreferrer"
             data-ph-event="cta_clicked"
             className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
           >
@@ -225,7 +225,7 @@ function Landing() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={links.checkout}
-              data-polar-checkout
+              target="_blank" rel="noopener noreferrer"
               data-ph-event="cta_clicked"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-neon hover:shadow-glow transition-all hover:scale-[1.02]"
             >
@@ -702,7 +702,7 @@ function Landing() {
               </p>
               <a
                 href={links.proCheckout}
-                data-polar-checkout
+                target="_blank" rel="noopener noreferrer"
                 data-ph-event="cta_clicked"
                 className="mt-7 block text-center rounded-full bg-secondary border border-border/60 px-5 py-3 text-sm font-semibold hover:bg-secondary/70 hover:border-accent/60 transition"
               >
@@ -736,7 +736,7 @@ function Landing() {
               </p>
               <a
                 href={links.powerCheckout}
-                data-polar-checkout
+                target="_blank" rel="noopener noreferrer"
                 data-ph-event="cta_clicked"
                 className="mt-7 block text-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:brightness-110 transition"
               >
