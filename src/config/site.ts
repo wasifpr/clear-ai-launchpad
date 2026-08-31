@@ -27,7 +27,7 @@ export const siteConfig = {
     signup: "https://chat.clearaiagents.com",
     login: "https://chat.clearaiagents.com",
     support: "mailto:support@clearaiagents.com",
-    whatsapp: "https://chat.whatsapp.com/IGAyGkGRygPJhRYBVfVE0F",
+    whatsapp: "https://web.whatsapp.com/accept?code=IGAyGkGRygPJhRYBVfVE0F",
     linkedin: "https://www.linkedin.com/company/clearaiagents",
   },
 
