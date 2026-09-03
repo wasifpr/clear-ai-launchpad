@@ -13,6 +13,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LongContextAiRouteImport } from './routes/long-context-ai'
+import { Route as DerestrictedChatgptAlternativeRouteImport } from './routes/derestricted-chatgpt-alternative'
 import { Route as DataPolicyRouteImport } from './routes/data-policy'
 import { Route as ChatgptAlternativeRouteImport } from './routes/chatgpt-alternative'
 import { Route as AiForWritingRouteImport } from './routes/ai-for-writing'
@@ -43,6 +44,12 @@ const LongContextAiRoute = LongContextAiRouteImport.update({
   path: '/long-context-ai',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DerestrictedChatgptAlternativeRoute =
+  DerestrictedChatgptAlternativeRouteImport.update({
+    id: '/derestricted-chatgpt-alternative',
+    path: '/derestricted-chatgpt-alternative',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DataPolicyRoute = DataPolicyRouteImport.update({
   id: '/data-policy',
   path: '/data-policy',
@@ -97,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/ai-for-writing': typeof AiForWritingRoute
   '/chatgpt-alternative': typeof ChatgptAlternativeRoute
   '/data-policy': typeof DataPolicyRoute
+  '/derestricted-chatgpt-alternative': typeof DerestrictedChatgptAlternativeRoute
   '/long-context-ai': typeof LongContextAiRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -112,6 +120,7 @@ export interface FileRoutesByTo {
   '/ai-for-writing': typeof AiForWritingRoute
   '/chatgpt-alternative': typeof ChatgptAlternativeRoute
   '/data-policy': typeof DataPolicyRoute
+  '/derestricted-chatgpt-alternative': typeof DerestrictedChatgptAlternativeRoute
   '/long-context-ai': typeof LongContextAiRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -128,6 +137,7 @@ export interface FileRoutesById {
   '/ai-for-writing': typeof AiForWritingRoute
   '/chatgpt-alternative': typeof ChatgptAlternativeRoute
   '/data-policy': typeof DataPolicyRoute
+  '/derestricted-chatgpt-alternative': typeof DerestrictedChatgptAlternativeRoute
   '/long-context-ai': typeof LongContextAiRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
     | '/ai-for-writing'
     | '/chatgpt-alternative'
     | '/data-policy'
+    | '/derestricted-chatgpt-alternative'
     | '/long-context-ai'
     | '/privacy'
     | '/sitemap.xml'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/ai-for-writing'
     | '/chatgpt-alternative'
     | '/data-policy'
+    | '/derestricted-chatgpt-alternative'
     | '/long-context-ai'
     | '/privacy'
     | '/sitemap.xml'
@@ -175,6 +187,7 @@ export interface FileRouteTypes {
     | '/ai-for-writing'
     | '/chatgpt-alternative'
     | '/data-policy'
+    | '/derestricted-chatgpt-alternative'
     | '/long-context-ai'
     | '/privacy'
     | '/sitemap.xml'
@@ -191,6 +204,7 @@ export interface RootRouteChildren {
   AiForWritingRoute: typeof AiForWritingRoute
   ChatgptAlternativeRoute: typeof ChatgptAlternativeRoute
   DataPolicyRoute: typeof DataPolicyRoute
+  DerestrictedChatgptAlternativeRoute: typeof DerestrictedChatgptAlternativeRoute
   LongContextAiRoute: typeof LongContextAiRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -227,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/long-context-ai'
       fullPath: '/long-context-ai'
       preLoaderRoute: typeof LongContextAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/derestricted-chatgpt-alternative': {
+      id: '/derestricted-chatgpt-alternative'
+      path: '/derestricted-chatgpt-alternative'
+      fullPath: '/derestricted-chatgpt-alternative'
+      preLoaderRoute: typeof DerestrictedChatgptAlternativeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/data-policy': {
@@ -303,6 +324,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiForWritingRoute: AiForWritingRoute,
   ChatgptAlternativeRoute: ChatgptAlternativeRoute,
   DataPolicyRoute: DataPolicyRoute,
+  DerestrictedChatgptAlternativeRoute: DerestrictedChatgptAlternativeRoute,
   LongContextAiRoute: LongContextAiRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

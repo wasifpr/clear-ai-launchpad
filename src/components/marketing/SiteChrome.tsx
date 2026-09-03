@@ -20,6 +20,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   const solutionLabels: Record<string, string> = {
     "chatgpt-alternative": "ChatGPT Alternative",
+    "derestricted-chatgpt-alternative": "Derestricted ChatGPT Alternative",
     "long-context-ai": "Long-context AI",
     "ai-for-coding": "AI for Coding",
     "ai-for-research": "AI for Research",
