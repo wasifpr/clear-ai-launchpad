@@ -74,7 +74,7 @@ export const siteConfig = {
       engine: "GLM-4.6-Derestricted-v5 · 355B",
       blurb:
         "Get more direct responses with fewer unnecessary refusals when standard assistants become overly cautious.",
-      badge: "No refusals",
+      badge: "More direct",
     },
     {
       key: "vision",
@@ -125,7 +125,7 @@ export const siteConfig = {
 
   /** Core capabilities under one subscription. */
   modalities: [
-    { name: "Chat", detail: "Streaming chat with 256K context" },
+    { name: "Chat", detail: "Streaming chat with up to 512K context" },
     { name: "Vision", detail: "Read screenshots, diagrams, and documents" },
     { name: "Code", detail: "Scripts, refactors, and full-repo reasoning" },
     { name: "Research", detail: "Multi-document analysis in one thread" },
@@ -189,7 +189,7 @@ export const siteConfig = {
         "Use FREEFREE for 1 month free if spots remain",
         "Everything in PRO",
         "Smart — GLM-4.7 (355B)",
-        "Full 256K context window",
+        "Up to 512K context on compatible modes",
         "Parallel requests & priority response",
         "Early access to new models",
       ],
@@ -235,79 +235,12 @@ export const siteConfig = {
     },
   ],
 
-  /** Social proof — edit quotes, screenshots and metrics here. */
-  social: {
-    outcomes: [
-      { value: "12,400+", label: "Active builders", detail: "Chatting daily across PWA and desktop" },
-      { value: "3.4M", label: "Messages / month", detail: "No token metering, no throttling" },
-      { value: "256K", label: "Context tokens", detail: "Full codebases in one conversation" },
-      { value: "0", label: "Logs stored", detail: "Prompts never written to disk" },
-    ],
-    testimonials: [
-      {
-        quote:
-          "I moved our whole content pipeline over. Same brief that got refused elsewhere now ships 40 landing pages a week.",
-        name: "Marcus Reyes",
-        role: "Growth lead, programmatic SEO agency",
-        initials: "MR",
-        metric: "40 pages/week",
-      },
-      {
-        quote:
-          "The 256K window is the whole product for me. I paste three research papers and it actually holds the thread.",
-        name: "Dr. Anaya Bose",
-        role: "Independent researcher",
-        initials: "AB",
-        metric: "3 papers per thread",
-      },
-      {
-        quote:
-          "Scraping and regex work used to eat my mornings. Clear AI just writes the script and explains the selectors.",
-        name: "Tomas Lindqvist",
-        role: "Data engineer",
-        initials: "TL",
-        metric: "~6 hrs saved weekly",
-      },
-      {
-        quote:
-          "Cheaper than the two subscriptions it replaced, and nothing lectures me halfway through a draft.",
-        name: "Priya Raman",
-        role: "Screenwriter",
-        initials: "PR",
-        metric: "2 tools replaced",
-      },
-    ],
-    /** Chat screenshots rendered as native UI (no image files to manage). */
-    screenshots: [
-      {
-        title: "Long-form drafting",
-        prompt: "Outline a 12-episode series bible, then draft episode 1 cold open.",
-        reply:
-          "Series bible ready — 12 episodes, arcs mapped per character. Cold open drafted at 480 words with the reveal held to the button.",
-        stat: "Delivered in one pass · 1.2s to first token",
-      },
-      {
-        title: "Technical scripting",
-        prompt: "Write an async scraper with retry + backoff and export to Parquet.",
-        reply:
-          "Done — httpx.AsyncClient with exponential backoff, 20-way concurrency, schema-typed Parquet writer, and a resume checkpoint.",
-        stat: "Runs on first paste · 0.8s generation",
-      },
-    ],
-    trustBadges: [
-      "Zero-log inference",
-      "Server-side key management",
-      "Cancel in one click",
-      "No token metering",
-    ],
-  },
-
   footer: {
 
     privacyLine:
       "Privacy-first. Zero-log inference. Server-side API key management. Your chats are yours.",
     aiDisclosure:
-      "You are interacting with an AI. While our models are unfiltered for productivity, we maintain hard-line safety filters against strictly illegal content.",
+      "You are interacting with an AI. Some modes are designed to be more direct for legitimate productivity use, while safeguards remain in place against illegal content. Always verify important outputs.",
   },
 } as const;
 

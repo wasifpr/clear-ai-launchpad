@@ -13,13 +13,13 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "description",
         content:
-          "Insights, prompt engineering tutorials, and uncensored AI research from the Clear AI team.",
+          "Practical AI workflows, prompting guides, and research for coding, writing, analysis, and productivity.",
       },
       { property: "og:title", content: "The Clear AI Blog" },
       {
         property: "og:description",
         content:
-          "Insights, prompt engineering tutorials, and uncensored AI research.",
+          "Practical AI workflows, prompting guides, and research for real work.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: absUrl("/blog") },
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/blog/")({
           "@type": "Blog",
           name: "The Clear AI Blog",
           description:
-            "Insights, prompt engineering tutorials, and uncensored AI research.",
+            "Practical AI workflows, prompting guides, and research for real work.",
           url: absUrl("/blog"),
           blogPost: posts.map((p) => ({
             "@type": "BlogPosting",
@@ -87,7 +87,7 @@ function BlogIndex() {
             The <span className="text-gradient">Clear AI</span> Blog
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Insights, prompt engineering tutorials, and uncensored AI research.
+            Practical AI workflows, prompting guides, and research for real work.
           </p>
         </div>
       </header>
