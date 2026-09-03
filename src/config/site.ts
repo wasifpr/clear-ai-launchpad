@@ -10,10 +10,10 @@ export const siteConfig = {
   siteUrl: "https://clearaiagents.com",
 
   brand: {
-    name: "Clear AI",
-    tagline: "Uncensored, Unrestricted Agentic AI",
+    name: "Clear AI Agents",
+    tagline: "Six AI brains. One workspace for real work.",
     description:
-      "Instant access to the world's most powerful open-source models without the annoying refusals.",
+      "A multi-model AI workspace for writing, coding, research, large documents, screenshots, and everyday productivity.",
   },
 
   // Checkout / CTA links — change these to your live payment URLs.
@@ -41,7 +41,7 @@ export const siteConfig = {
       name: "Smart",
       engine: "GLM-4.7 · 355B · 202K ctx",
       blurb:
-        "Flagship deep-reasoning brain for planning, analysis, and long agentic runs.",
+        "Plan complex work, reason through trade-offs, and turn unclear problems into a practical next step.",
       badge: "Flagship",
     },
     {
@@ -49,7 +49,7 @@ export const siteConfig = {
       name: "Fast",
       engine: "MiMo-V2.5 · 310B · 131K ctx",
       blurb:
-        "The everyday workhorse — near-instant replies with reasoning kept on.",
+        "Draft replies, summarize notes, rewrite copy, and finish everyday tasks without waiting.",
       badge: "~80% of chats",
     },
     {
@@ -57,7 +57,7 @@ export const siteConfig = {
       name: "Long Context",
       engine: "DeepSeek-V4-Flash · 284B · 512K ctx",
       blurb:
-        "Half a million tokens in one thread — entire codebases, textbooks, and case files.",
+        "Work across large reports, codebases, textbooks, case files, and long notes with up to 512K context.",
       badge: "512K context",
     },
     {
@@ -65,7 +65,7 @@ export const siteConfig = {
       name: "Creative",
       engine: "Qwen3.5-27B-Derestricted · 262K ctx",
       blurb:
-        "High-volume writing, scripts, and long-form drafting without slop or lectures.",
+        "Build outlines, scripts, campaigns, and long-form drafts while keeping tone and structure consistent.",
       badge: "Writing",
     },
     {
@@ -73,7 +73,7 @@ export const siteConfig = {
       name: "Derestricted",
       engine: "GLM-4.6-Derestricted-v5 · 355B",
       blurb:
-        "Refusal behavior removed at the weights level — it answers instead of lecturing.",
+        "Get more direct responses with fewer unnecessary refusals when standard assistants become overly cautious.",
       badge: "No refusals",
     },
     {
@@ -81,7 +81,7 @@ export const siteConfig = {
       name: "Vision",
       engine: "Gemma-4-31B · 262K ctx · VLM",
       blurb:
-        "Read screenshots, diagrams, documents, and photos with raw image understanding.",
+        "Read screenshots, diagrams, scanned pages, and documents, then explain or act on what is visible.",
       badge: "Multimodal",
     },
   ],
@@ -141,10 +141,10 @@ export const siteConfig = {
   /** Limited-time offer — shown above pricing. Set `active: false` to hide. */
   promo: {
     active: true,
-    trial: "3-day free trial",
-    code: "OFF20",
-    percent: 20,
-    validUntil: "October 2026",
+    freeCode: "FREEFREE",
+    freeOffer: "1 month free for the first 20 users, while spots remain",
+    discountCode: "OFF40",
+    discountPercent: 40,
   },
 
   // Pricing — edit price, period, or features here.
@@ -168,9 +168,9 @@ export const siteConfig = {
       period: "/mo",
       blurb:
         "Unlimited messages on Fast, Creative, and Vision models.",
-      cta: "Start 3-Day Free Trial",
+      cta: "Claim 1 Month Free",
       features: [
-        "3-day free trial included",
+        "Use FREEFREE for 1 month free if spots remain",
         "Everything in Free",
         "Fast, Creative & Vision models",
         "Unlimited messages, no token metering",
@@ -184,9 +184,9 @@ export const siteConfig = {
       period: "/mo",
       blurb:
         "The flagship tier. Smart (GLM-4.7), full 256K context, and parallel requests.",
-      cta: "Start 3-Day Free Trial",
+      cta: "Claim 1 Month Free",
       features: [
-        "3-day free trial included",
+        "Use FREEFREE for 1 month free if spots remain",
         "Everything in PRO",
         "Smart — GLM-4.7 (355B)",
         "Full 256K context window",
@@ -198,48 +198,40 @@ export const siteConfig = {
 
   faq: [
     {
-      q: "What models does Clear AI run?",
-      a: "Clear AI runs derestricted open-weight frontier models — GLM-4.7 (355B), GLM-4.6-Derestricted-v5, DeepSeek-V4-Flash (512K context), MiMo-V2.5 (310B), Qwen3.5-27B-Derestricted, and Gemma 4 31B vision models — behind friendly names: Smart, Fast, Long Context, Creative, Derestricted, and Vision.",
+      q: "Why use Clear AI Agents instead of ChatGPT?",
+      a: "Clear AI Agents gives you six specialized modes in one workspace, so you can use a fast mode for routine tasks, deeper reasoning for complex work, long context for large source sets, and vision for screenshots and documents without changing tools.",
     },
     {
-      q: "Are there message limits?",
-      a: "No. Paid plans include unlimited messages. We only limit how many requests run in parallel, which scales with your tier.",
+      q: "Who is Clear AI Agents for?",
+      a: "It is built for developers, writers, researchers, students, analysts, founders, and anyone who uses AI for practical work across more than one kind of task.",
     },
     {
-      q: "How long is the context window?",
-      a: "Up to 512K tokens (524,288) on DeepSeek-V4-Flash and 262K on the Gemma 4 and Qwen3.5 models — enough for entire codebases, textbooks, or multi-document research in a single conversation.",
+      q: "What does long context help with?",
+      a: "Long context helps an AI keep more source material available at once, which is useful for codebases, reports, textbooks, case files, research papers, and long notes. Clear AI Agents supports up to 512K on compatible modes.",
     },
     {
-      q: "Do you store my chats?",
-      a: "No. Clear AI is zero-log: prompts and generations are never written to storage. Your conversation history lives on your device.",
+      q: "What does more direct or less restrictive mean?",
+      a: "The Derestricted brain is designed to reduce unnecessary refusals and give more direct answers for legitimate work. It does not remove safeguards against illegal content.",
     },
     {
-      q: "Can I use it on my phone?",
-      a: "Yes. Clear AI installs as a PWA on iPhone, Android, and desktop — full-screen app, no app store required.",
+      q: "Do I need API keys or model files?",
+      a: "No. Clear AI Agents is browser-based and manages the model access for you. Create an account, choose a brain, and start working.",
     },
     {
-      q: "Can I cancel anytime?",
-      a: "Yes. Subscriptions are month-to-month and cancel in one click from your account settings.",
+      q: "Can I use it for coding, writing, and research?",
+      a: "Yes. The six modes cover coding, writing, research, large-document analysis, screenshots, brainstorming, and fast everyday tasks in the same workspace.",
     },
   ],
 
-  /** Extra FAQ entries appended for SEO/GEO coverage. */
+  /** Additional practical product FAQs. */
   faqExtra: [
     {
-      q: "What can Clear AI answer that ChatGPT, Claude, or Gemini refuse?",
-      a: "Clinical and forensic research terminology, long-form fiction with morally grey characters, web scraping and regex scripts, security research and log analysis, blunt competitor teardowns, direct-response sales copy, high-volume translation, and persona roleplay that stays in character.",
+      q: "Is Clear AI Agents browser-based?",
+      a: "Yes. It runs in your browser and can also be installed as a progressive web app on supported phones and desktops.",
     },
     {
-      q: "Is Clear AI a good ChatGPT alternative?",
-      a: "Yes. For $14.99/mo you get unlimited messages on derestricted frontier models with up to 512K context, vision, and zero-log privacy — no token metering and no refusal wall on legitimate professional work.",
-    },
-    {
-      q: "Which model should I pick?",
-      a: "Use Fast (MiMo-V2.5) for everyday chat, Smart (GLM-4.7) for planning and deep reasoning, Long Context (DeepSeek-V4-Flash) for whole codebases and document sets, Creative (Qwen3.5-Derestricted) for writing, and Vision (Gemma 4 31B) for screenshots and scanned documents.",
-    },
-    {
-      q: "Do you add new models?",
-      a: "Yes. New frontier and derestricted models are added as they ship, and Power subscribers get early access at no extra cost.",
+      q: "How do the FREEFREE and OFF40 offers work?",
+      a: "FREEFREE gives the first 20 eligible users one month free while spots remain. OFF40 gives 40% off the first month. Enter one code during checkout; offers cannot be combined.",
     },
   ],
 
