@@ -18,10 +18,18 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const solutionLabels: Record<string, string> = {
+    "chatgpt-alternative": "ChatGPT Alternative",
+    "long-context-ai": "Long-context AI",
+    "ai-for-coding": "AI for Coding",
+    "ai-for-research": "AI for Research",
+    "ai-for-writing": "AI for Writing",
+  };
+
   return <footer className="border-t border-border/40">
     <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
       <div><div className="flex items-center gap-2.5"><img src={logo} alt="Clear AI Agents logo" width={28} height={28}/><span className="font-bold">Clear <span className="text-gradient">AI Agents</span></span></div><p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">Six specialized AI brains for coding, writing, research, large documents, screenshots, and everyday productivity.</p><p className="mt-4 text-xs text-muted-foreground"><Shield className="mr-1.5 inline h-3.5 w-3.5 text-primary"/>{siteConfig.footer.privacyLine}</p></div>
-      <nav aria-label="Solutions"><p className="mb-3 text-xs font-semibold uppercase text-foreground">Solutions</p><ul className="space-y-2.5 text-sm text-muted-foreground">{landingList.map((page)=><li key={page.slug}><Link to={`/${page.slug}` as "/ai-for-coding"} className="hover:text-foreground">{page.headline.split(" for ")[0].replace("A flexible ","")}</Link></li>)}</ul></nav>
+      <nav aria-label="Solutions"><p className="mb-3 text-xs font-semibold uppercase text-foreground">Solutions</p><ul className="space-y-2.5 text-sm text-muted-foreground">{landingList.map((page)=><li key={page.slug}><Link to={`/${page.slug}` as "/ai-for-coding"} className="hover:text-foreground">{solutionLabels[page.slug] ?? page.eyebrow}</Link></li>)}</ul></nav>
       <div><p className="mb-3 text-xs font-semibold uppercase text-foreground">Company</p><div className="space-y-2.5 text-sm text-muted-foreground"><Link to="/blog" className="block hover:text-foreground">Blog</Link><Link to="/" hash="community" className="block hover:text-foreground">Community</Link><Link to="/" hash="contact" className="block hover:text-foreground">Contact</Link></div></div>
     </div>
     <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-border/40 px-6 py-6 md:flex-row"><LegalLinks/><SocialLinks/><p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Clear AI Agents</p></div>
