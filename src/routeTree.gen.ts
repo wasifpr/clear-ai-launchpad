@@ -12,7 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LongContextAiRouteImport } from './routes/long-context-ai'
 import { Route as DataPolicyRouteImport } from './routes/data-policy'
+import { Route as ChatgptAlternativeRouteImport } from './routes/chatgpt-alternative'
+import { Route as AiForWritingRouteImport } from './routes/ai-for-writing'
+import { Route as AiForResearchRouteImport } from './routes/ai-for-research'
+import { Route as AiForCodingRouteImport } from './routes/ai-for-coding'
 import { Route as AcceptableUseRouteImport } from './routes/acceptable-use'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -33,9 +38,34 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LongContextAiRoute = LongContextAiRouteImport.update({
+  id: '/long-context-ai',
+  path: '/long-context-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DataPolicyRoute = DataPolicyRouteImport.update({
   id: '/data-policy',
   path: '/data-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatgptAlternativeRoute = ChatgptAlternativeRouteImport.update({
+  id: '/chatgpt-alternative',
+  path: '/chatgpt-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiForWritingRoute = AiForWritingRouteImport.update({
+  id: '/ai-for-writing',
+  path: '/ai-for-writing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiForResearchRoute = AiForResearchRouteImport.update({
+  id: '/ai-for-research',
+  path: '/ai-for-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiForCodingRoute = AiForCodingRouteImport.update({
+  id: '/ai-for-coding',
+  path: '/ai-for-coding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcceptableUseRoute = AcceptableUseRouteImport.update({
@@ -62,7 +92,12 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/acceptable-use': typeof AcceptableUseRoute
+  '/ai-for-coding': typeof AiForCodingRoute
+  '/ai-for-research': typeof AiForResearchRoute
+  '/ai-for-writing': typeof AiForWritingRoute
+  '/chatgpt-alternative': typeof ChatgptAlternativeRoute
   '/data-policy': typeof DataPolicyRoute
+  '/long-context-ai': typeof LongContextAiRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -72,7 +107,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/acceptable-use': typeof AcceptableUseRoute
+  '/ai-for-coding': typeof AiForCodingRoute
+  '/ai-for-research': typeof AiForResearchRoute
+  '/ai-for-writing': typeof AiForWritingRoute
+  '/chatgpt-alternative': typeof ChatgptAlternativeRoute
   '/data-policy': typeof DataPolicyRoute
+  '/long-context-ai': typeof LongContextAiRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -83,7 +123,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/acceptable-use': typeof AcceptableUseRoute
+  '/ai-for-coding': typeof AiForCodingRoute
+  '/ai-for-research': typeof AiForResearchRoute
+  '/ai-for-writing': typeof AiForWritingRoute
+  '/chatgpt-alternative': typeof ChatgptAlternativeRoute
   '/data-policy': typeof DataPolicyRoute
+  '/long-context-ai': typeof LongContextAiRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -95,7 +140,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/acceptable-use'
+    | '/ai-for-coding'
+    | '/ai-for-research'
+    | '/ai-for-writing'
+    | '/chatgpt-alternative'
     | '/data-policy'
+    | '/long-context-ai'
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
@@ -105,7 +155,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/acceptable-use'
+    | '/ai-for-coding'
+    | '/ai-for-research'
+    | '/ai-for-writing'
+    | '/chatgpt-alternative'
     | '/data-policy'
+    | '/long-context-ai'
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
@@ -115,7 +170,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/acceptable-use'
+    | '/ai-for-coding'
+    | '/ai-for-research'
+    | '/ai-for-writing'
+    | '/chatgpt-alternative'
     | '/data-policy'
+    | '/long-context-ai'
     | '/privacy'
     | '/sitemap.xml'
     | '/terms'
@@ -126,7 +186,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcceptableUseRoute: typeof AcceptableUseRoute
+  AiForCodingRoute: typeof AiForCodingRoute
+  AiForResearchRoute: typeof AiForResearchRoute
+  AiForWritingRoute: typeof AiForWritingRoute
+  ChatgptAlternativeRoute: typeof ChatgptAlternativeRoute
   DataPolicyRoute: typeof DataPolicyRoute
+  LongContextAiRoute: typeof LongContextAiRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
@@ -157,11 +222,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/long-context-ai': {
+      id: '/long-context-ai'
+      path: '/long-context-ai'
+      fullPath: '/long-context-ai'
+      preLoaderRoute: typeof LongContextAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/data-policy': {
       id: '/data-policy'
       path: '/data-policy'
       fullPath: '/data-policy'
       preLoaderRoute: typeof DataPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chatgpt-alternative': {
+      id: '/chatgpt-alternative'
+      path: '/chatgpt-alternative'
+      fullPath: '/chatgpt-alternative'
+      preLoaderRoute: typeof ChatgptAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-for-writing': {
+      id: '/ai-for-writing'
+      path: '/ai-for-writing'
+      fullPath: '/ai-for-writing'
+      preLoaderRoute: typeof AiForWritingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-for-research': {
+      id: '/ai-for-research'
+      path: '/ai-for-research'
+      fullPath: '/ai-for-research'
+      preLoaderRoute: typeof AiForResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-for-coding': {
+      id: '/ai-for-coding'
+      path: '/ai-for-coding'
+      fullPath: '/ai-for-coding'
+      preLoaderRoute: typeof AiForCodingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/acceptable-use': {
@@ -198,7 +298,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcceptableUseRoute: AcceptableUseRoute,
+  AiForCodingRoute: AiForCodingRoute,
+  AiForResearchRoute: AiForResearchRoute,
+  AiForWritingRoute: AiForWritingRoute,
+  ChatgptAlternativeRoute: ChatgptAlternativeRoute,
   DataPolicyRoute: DataPolicyRoute,
+  LongContextAiRoute: LongContextAiRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
