@@ -141,8 +141,6 @@ export const siteConfig = {
   /** Limited-time offer — shown above pricing. Set `active: false` to hide. */
   promo: {
     active: true,
-    freeCode: "FREEFREE",
-    freeOffer: "1 month free for the first 20 users, while spots remain",
     discountCode: "OFF40",
     discountPercent: 40,
   },
@@ -168,9 +166,8 @@ export const siteConfig = {
       period: "/mo",
       blurb:
         "Unlimited messages on Fast, Creative, and Vision models.",
-      cta: "Claim 1 Month Free",
+      cta: "Choose PRO",
       features: [
-        "Use FREEFREE for 1 month free if spots remain",
         "Everything in Free",
         "Fast, Creative & Vision models",
         "Unlimited messages, no token metering",
@@ -184,9 +181,8 @@ export const siteConfig = {
       period: "/mo",
       blurb:
         "The flagship tier. Smart (GLM-4.7), full 256K context, and parallel requests.",
-      cta: "Claim 1 Month Free",
+      cta: "Choose Power",
       features: [
-        "Use FREEFREE for 1 month free if spots remain",
         "Everything in PRO",
         "Smart — GLM-4.7 (355B)",
         "Up to 512K context on compatible modes",
@@ -230,8 +226,8 @@ export const siteConfig = {
       a: "Yes. It runs in your browser and can also be installed as a progressive web app on supported phones and desktops.",
     },
     {
-      q: "How do the FREEFREE and OFF40 offers work?",
-      a: "FREEFREE gives the first 20 eligible users one month free while spots remain. OFF40 gives 40% off the first month. Enter one code during checkout; offers cannot be combined.",
+      q: "How does the OFF40 offer work?",
+      a: "OFF40 gives 40% off the first month. Enter the code during checkout.",
     },
   ],
 
