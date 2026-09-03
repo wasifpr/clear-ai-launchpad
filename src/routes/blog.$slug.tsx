@@ -51,7 +51,7 @@ export const Route = createFileRoute("/blog/$slug")({
             datePublished: post.date,
             dateModified: post.date,
             mainEntityOfPage: url,
-            publisher: { "@type": "Organization", name: "Clear AI", url: absUrl("/") },
+            publisher: { "@type": "Organization", name: "Clear AI Agents", url: absUrl("/") },
             articleSection: post.category,
           }),
         },
@@ -237,8 +237,8 @@ function InArticleCTA() {
         Clear AI Power
       </p>
       <h3 className="text-2xl md:text-[26px] font-bold tracking-tight leading-snug">
-        Tired of models refusing your prompts? Upgrade to Clear AI Power to
-        access <span className="text-gradient">Llama-3.3 Uncensored</span>.
+        Bring writing, coding, research, documents, and screenshots into
+        <span className="text-gradient"> one multi-model workspace</span>.
       </h3>
       <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <a
@@ -246,7 +246,7 @@ function InArticleCTA() {
           target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-neon hover:shadow-glow transition-all hover:scale-[1.02]"
         >
-          Start Free Trial
+          Start with Clear AI Power
           <ArrowRight className="w-4 h-4" />
         </a>
         <span className="text-xs text-muted-foreground">
